@@ -1,0 +1,72 @@
+# Worshop 1
+
+## Oppgave 1
+
+Skriv en kort statisk greeting-tekst med React.
+
+Hint/forslag:
+
+- Det er ikke nødvendig å bruke `React.createClass(...)` for denne oppgaven.
+- Bruk `React.createElement(...)` til å instansiere komponenten.
+- Bruk `ReactDOM.render({ ... })` til å vise komponenten i DOM-en.
+
+
+
+## Oppgave 2
+
+Lag en header-komponent som inneholder en statisk greeting-tekst - f.eks "Hei!"
+
+Hint/forslag:
+
+- Header kan defineres med `React.createClass({ ... })`.
+- Header trenger kun å implementere én funksjon: `render() { ... }`
+- `render()` må returnere et React-element - bruk gjerne det du hadde fra oppgave 1).
+- Lag en instans av Header med `React.createElement(...)`
+- Render Header til DOM med `ReactDOM.render({ ... })`
+
+
+## Oppgave 3
+
+Vis "Hei, <ditt navn>!" i stedet for den statiske teksten
+
+Hint/forslag:
+
+- Send med navnet til "innlogget bruker" i header-komponenten og bruk `this.props` inne i komponenten til å lese verdien.
+
+
+
+## Oppgave 4
+
+Vis dagens dato som en footer
+
+Hint/forslag:
+
+- `ReactDOM.render(...)` krever én rot-komponent, så for å inkludere både header og footer må de wrappes i f.eks en `<div>`
+
+
+## Oppgave 5
+
+Vis en liste over ansattes navn.
+
+Hint/forslag:
+
+- Vi dropper persistering på denne workshoppen, lista av ansatte kan være hardkodet i komponenten.
+- Bruk gjerne HTML sin `<ul>` for å lage lista. Navnet på hver ansatt listes i en `<li>`.
+- Det holder foreløpig med én ekstra komponent (Én `React.createClass({ ... })`)
+
+
+
+## Oppgave 6 (JSX)
+
+Gi mulighet til å legge til ansatte
+
+Hint/forslag:
+
+
+
+## Oppgave 7 (JSX)
+
+Gi mulighet til å slette ansatte
+
+Hint/forslag:
+
