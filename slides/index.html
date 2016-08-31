@@ -1,220 +1,682 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
 
-		<title>React Workshop</title>
+    <title>React Workshop</title>
 
-		<meta name="author" content="Kris-Mikael Krister">
+    <meta name="author" content="Kris-Mikael Krister">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+<style>
+ul li, .hints {
+    font-size: 0.7em !important;
+}
 
-	<body>
+.hints {
+    margin-top: 40px !important;
+    text-align: left !important;
+}
 
-		<div class="reveal">
+pre {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 1 !important;
+}
+</style>
+</head>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<img src="imgs/react.svg" style="border: 0; background-color: transparent;"/>
-					<p>
-						<small><a href="mailto:kris-mikael.krister@webstep.no">kris-mikael.krister@webstep.no</a></small>
-					</p>
-					<aside class="notes">
-					</aside>
-				</section>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <img src="imgs/react.svg" style="border: 0; background-color: transparent;"/>
+                <p>
+                    <small><a href="mailto:kris-mikael.krister@webstep.no">kris-mikael.krister@webstep.no</a></small>
+                </p>
+                <aside class="notes">
+                </aside>
+            </section>
 
-				<section>
-					<h1>JavaScript fatigue</h1>
+            <section>
+                <!-- 5 min -->
+                <h2>Agenda</h2>
+                <ul>
+                    <li>Overordnet React</li>
+                    <li>Verktøykasse vi tar i bruk</li>
+                    <li>Konsepter i React (med oppgaver)</li>
+                    <li>JSX (med oppgaver)</li>
+                    <li>State og events (med oppgaver)</li>
+                    <li>Webpack (med oppgaver)</li>
+                </ul>
 
-					<img src="imgs/fatigue.jpg"/>
-				</section>
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
 
-				<section>
-					<h1></h1>
+            <section>
+                <!-- 5 min -->
+                <h2>React overordnet</h2>
+                <ul>
+                    <li>Kun view</li>
+                    <li>Virtuell DOM</li>
+                    <li>Konsist API</li>
+                    <li>Dataflyt én vei</li>
+                </ul>
 
-					<div>
-					<img src="imgs/6153273.png"/>
-					</div>
-				</section>
+                <aside class="notes">
+                    <ul>
+                        <li>Synker DOM med dine data</li>
+                    </ul>
+                </aside>
+            </section>
 
-				<section>
-					<div style="margin-top: -30px">
-					<img src="imgs/react-webpack.png"/>
-					</div>
+            <section>
+                <!-- 5 min -->
+                <h2>Workshop 1</h2>
+                <ul>
+                    <li>React</li>
+                    <li>ECMAScript 6</li>
+                    <li>JSX</li>
+                    <li>Babel</li>
+                    <li>Node og npm</li>
+                    <li>Webpack (hvis vi rekker)</li>
+                </ul>
+                <aside class="notes">
+                    <ul>
+                        <li>Nevne hva man kommer til å lære av WS1</li>
+                    </ul>
+                </aside>
+            </section>
 
-					<img src="imgs/relaxing.jpg" style="width: 50%"/>
-				</section>
+            <section>
+                <!-- 1 min -->
+                <h2>Workshop 2</h2>
+                <ul>
+                    <li>Redux</li>
+                    <li>Testing med Ava</li>
+                </ul>
+                <aside class="notes">
+                    <ul>
+                        <li>Nevne hva man kommer til å lære av WS2</li>
+                    </ul>
+                </aside>
+            </section>
 
-				<section>
-					<h1>Overordnet</h1>
-					<ul>
-						<li>Kun view</li>
-						<li>Virtuell DOM</li>
-						<li>Dataflyt én vei</li>
-					</ul>
+            <section>
+                <!-- 5 min -->
+                <h2>Konsepter</h2>
 
-					<aside class="notes">
-						<ul>
-							<li>Synker DOM med dine data</li>
-						</ul>
-					</aside>
-				</section>
+                <ul>
+                    <li><code>React.createClass()</code></li>
+                    <li><code>React.createElement()</code></li>
+                    <li><code>ReactDOM.render()</code></li>
+                    <li>Props</li>
+                    <li>State</li>
+                    <li>Events</li>
+                </ul>
+                <aside class="notes">
+                    <ul>
+                        <li>createElement både med div og element via create class neste slide</li>
+                    </ul>
+                </aside>
+            </section>
 
-				<section>
-					<h1>Reconciliation</h1>
+            <section>
+                <!-- 10 min -->
+                <h2 style="text-transform: none;">React.createElement()</h2>
 
-					<img src="imgs/should-component-update.png" />
+                <pre>
+                    <code class="language-jsx">
+React.createElement("div", null, "Hei på deg!");
 
-					<aside class="notes">
-						<ul>
-							<li>O(n) kjøretid for oppdateringer</li>
-						</ul>
-					</aside>
-				</section>
+React.createElement(MyOwnHeaderComponent, null);
+                    </code>
+                </pre>
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
 
-				<section>
-					<h1>Økosystem</h1>
-					<ul>
-						<li class="fragment highlight-green">React</li>
-						<li class="fragment highlight-green">ECMAScript 6</li>
-						<li class="fragment highlight-green">JSX</li>
-						<li class="fragment highlight-green">Babel</li>
-						<li class="fragment highlight-red">Flux / Redux</li>
-						<li class="fragment highlight-red">Node og npm</li>
-						<li class="fragment highlight-red">Webpack</li>
-						<li class="fragment highlight-red">Enzyme</li>
-						<li class="fragment highlight-red">Hot reload</li>
-						<li class="fragment highlight-red">Server side render</li>
-					</ul>
-				</section>
+            <section>
+                <!-- 5 min -->
+                <h2 style="text-transform: none;">ReactDOM.render()</h2>
 
-				<section>
-					<h1>Konsepter</h1>
+                <pre>
+                    <code class="language-jsx">
+var myElement = React.createElement(...);
 
-					<ul>
-						<li><code>React.createClass()</code></li>
-						<li><code>React.createElement()</code></li>
-						<li>Props</li>
-						<li>State</li>
-					</ul>
-				</section>
+ReactDOM.render(myElement, document.getElementById('my-dom-id'));
+                    </code>
+                </pre>
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
 
-				<section>
-					<img style="width: 100%" src="imgs/employee-app.svg" />
+            <section>
+                <!-- 15 min -->
+                <h2>Oppgave 1 - Hello world</h2>
 
-					<aside class="notes">
-					digraph G {
-						App -> Header;
-						App -> EmployeeList;
-						App -> AddEmployeeForm;
-					}
-					</aside>
-				</section>
+                <p>Skriv en kort statisk tekst til DOM med React</p>
 
-				<section>
-<p>ES5</p>
-					<pre style="margin-top: -40px">
-						<code class="javascript hljs">
-var Header = React.createClass({
-    render: function () {
-        return React.createElement("div", null,
-            Hei " + this.props.name);
+                <p class="hints">Hint/forslag:</p>
+
+                <ul>
+                    <li>Ta utgangspunkt i <code>tasks/task-1/index.html</code> fra repoet <a href="https://github.com/kmkr/react-ws">https://github.com/kmkr/react-ws</a></li>
+                </ul>
+                <pre>
+                    <code class="language-jsx">
+React.createElement("div", null, "Hei på deg!")
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2 style="text-transform: none;">React.createClass()</h2>
+
+                <pre>
+                    <code class="language-jsx">
+var MyComponent = React.createClass({
+    render: function() {
+        return React.createElement(...)
     }
 });
-					</code>
-				</pre>
-<p>JSX</p>
-				<pre style="margin-top: -40px">
-					<code class="javascript hljs">
+
+var myElement = React.createElement(MyComponent);
+ReactDOM.render(...);
+                    </code>
+                </pre>
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <!-- 15 min -->
+                <h2>Oppgave 2 - React-komponent</h2>
+
+                <p>Lag React-komponenten "Header" som inneholder en statisk tekst - f.eks "Hei!"</p>
+
+                <p class="hints">Hint/forslag:</p>
+
+                <ul>
+                    <li>Fortsett på forrige oppgave, eller bruk <code>tasks/task-2/index.html</code></a></li>
+                    <li>Definer Header med <code>React.createClass({ ... })</code>.</li>
+                    <li>Header trenger kun én funksjon: <code>render() { ... }</code></li>
+                    <li><code>render()</code> må returnere ett enkelt React-element - gjerne tilsvarende det fra oppgave 1).</li>
+                    <li>Lag en instans av Header med <code>React.createElement(...)</code></li>
+                    <li>Render Header til DOM med <code>ReactDOM.render({ ... })</code></li>
+                </ul>
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>Props</h2>
+
+                <pre>
+                    <code class="language-jsx">
+React.createElement(MyOwnHeaderComponent, {yourName: "Kris-Mikael"});
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="language-jsx">
+var MyOwnHeaderComponent = React.createElement({
+    render: function () {
+        var name = this.props.yourName;
+        // ...
+    }
+});
+                    </code>
+                </pre>
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <!-- 10 min -->
+                <h2>Oppgave 3 - props</h2>
+
+                <p>Vis "Hei, &lt;ditt navn&gt;!" i stedet for den statiske teksten</p>
+
+                <p class="hints">Hint/forslag:</p>
+
+                <ul>
+                    <li>Send med navnet ditt til Header og bruk <code>this.props</code> inne i Header til å lese verdien</li>
+                </ul>
+                <pre>
+                    <code class="language-jsx">
+var MyOwnHeaderComponent = React.createElement({
+    render: function () {
+        var name = this.props.yourName;
+        // ...
+    }
+});
+
+React.createElement(MyOwnHeaderComponent, {yourName: 'Ole Brumm'});
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>React root</h2>
+
+                <p><code>React.createElement(...)</code> må returnere kun ett element</p>
+
+                <img style="width: 50%" src="imgs/div-header-movielist.svg" />
+
+                <aside class="notes">
+                    http://webgraphviz.com/
+
+                    digraph G {
+                        div -> Header;
+                        div -> MovieList;
+                    }
+                </aside>
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>React root - løst med wrapper</h2>
+                <pre>
+                    <code class="language-jsx">
+var myElem = React.createElement(
+    'div',
+    null,
+    React.createElement('p', null, 'First paragraph'),
+    React.createElement('p', null, 'Second paragraph')
+);
+
+ReactDOM.render(myElem, ...)
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <!-- 15 min -->
+                <h2>Oppgave 4 - react root</h2>
+
+                <p>Lag en ny komponent - MovieList - og render den til DOM</p>
+
+                <p class="hints">Hint/forslag:</p>
+
+                <ul>
+                    <li>Innhold i komponenten kan foreløpig være en tom tekst</li>
+                    <li><code>ReactDOM.render(...)</code> krever én rot-komponent, så for å inkludere både Header og MovieList må de wrappes i f.eks en <code>&lt;div&gt;</code>.</li>
+                </ul>
+                <img style="width: 50%" src="imgs/div-header-movielist.svg" />
+
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>Vilkårlig JavaScript i <code>render()</code></h2>
+
+                <pre>
+                    <code class="language-jsx">
+var favoriteHerbs = ['cilantro', 'basil', 'parsley'];
+
+React.createElement({
+    render: function () {
+        return React.createElement('ul', null, favoriteHerbs.map(function (herb) {
+            return React.createElement('li', {key: herb}, herb);
+        }));
+    }
+});
+                    </code>
+                </pre>
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <!-- 15 min -->
+                <h2>Oppgave 5</h2>
+
+                <p>Vis en liste over filmer du liker i MovieList</p>
+
+                <p class="hints">Hint/forslag:</p>
+
+                <ul>
+                    <li>Filmlista kan være et hardkodet array i komponenten</li>
+                    <li>Bruk <code>.map()</code> til å iterere over arrayet</li>
+                    <li>Bruk <code>&lt;ul&gt;</code> til lista. Navnet på hver film vises i en <code>&lt;li&gt;</code>.</li>
+                </ul>
+
+            </section>
+
+
+            <section>
+                <!-- 5 min -->
+                <h2>JSX</h2>
+
+                <pre>
+                    <code class="language-javascript">
+var Header = React.createClass({
+    render: function () {
+        return React.createElement(
+            "p",
+            null,
+            "Hei " + this.props.name
+        );
+    }
+});
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="language-jsx">
 class Header extends React.Component {
     render() {
+        return &lt;p&gt;Hei {this.props.name}&lt;/p&gt;;
+    }
+}
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <!-- 1 min -->
+                <img src="imgs/one-does-not-simply.jpg" />
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <!-- 4 min -->
+                <div style="display: flex; width: 100%; height: 200px; margin-left: -50px; justify-content: space-between; ">
+                    <div style="height: 200px; margin-top: -50px; margin-right: 40px;">
+                        <img src="imgs/es6.png" style="max-width: 150px;"/>
+                        <img src="imgs/jsx.png" style="max-width: 150px;"/>
+                        <img src="imgs/asyncawait.png" style="max-width: 150px;"/>
+                    </div>
+                    <div style="font-size: 3em; margin-top: 30px; text-align: center;">→</div>
+                    <div>
+                        <img src="imgs/babel.png" style="max-width: 400px; margin: 0 50px;"/>
+                    </div>
+                    <div style="font-size: 3em; margin-top: 30px; text-align: center;">→</div>
+                    <div>
+                        <img src="imgs/es5.png" style="margin-left: 40px; max-width: 120px; margin-top: 40px;"/>
+                    </div>
+                </div>
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <!-- 2 min -->
+                <h2>Hvordan bruke Babel?</h2>
+
+                <img src="imgs/node-logo.svg" style="background-color: #fff" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Forklar node</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <!-- 2 min -->
+                <h2>Hvordan bruke Babel?</h2>
+
+                <img src="imgs/npm-scrshot.png" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Forklar npm</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>Hvordan bruke Babel?</h2>
+
+                <ol>
+                    <li>Installer node</li>
+                    <li>Kjør <code>npm init</code></li>
+                    <li>Installer babel med <code>npm install</code></li>
+                    <li>Et par linjer i <code>.babelrc</code></li>
+                </ol>
+
+                <p>Good to go, kjør babel med node!</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Vis feilmeldinger (f.eks unterminated JSX)</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <!-- 15 min -->
+                <h2>Oppgave 6 - Babel</h2>
+
+                <p>Skriv om React-komponentene dine til JSX</p>
+
+                <p class="hints">Hint/forslag:</p>
+                <ul>
+                <li>Ta utgangspunkt i tasks/task-6-babel</li>
+                <li>Kjør <code>npm install</code> for å installere avhengigheter</li>
+                <li>Kjør <code>npm run build</code> for å transpilere</li>
+                </ul>
+
+                <pre>
+                    <code class="language-jsx">
+class Header extends React.Component {
+    render() {
+        return <p>Hei {this.props.name}</p>;
+    }
+}
+                    </code>
+                </pre>
+
+            </section>
+
+            <section>
+                <!-- 10 min -->
+                <h2>Events</h2>
+
+                <pre>
+                    <code class="language-jsx">
+class MyComponent extends React.Component {
+    handleChange(event) { // ... }
+    handleClick(event) { // ... }
+
+    render() {
+        const {myValue} = this.state;
         return (
-            <div>
-                Hei {this.props.name}
-            </div>
+            &lt;div&gt;
+                &lt;input
+                    value={myValue}
+                    onChange={this.handleChange.bind(this)}/&gt;
+                &lt;button
+                    onClick={this.handleClick.bind(this)}&gt;Add movie&lt;/button&gt;
+            &lt;/div&gt;
         );
     }
 }
-					</code>
-				</pre>
+                    </code>
+                </pre>
 
-				</section>
+            </section>
 
-				<section>
-					<h1>Lifecycle-metoder</h1>
-					<ul>
-						<li><code>componentWillMount()</code></li>
-						<li><code>componentDidMount()</code></li>
-						<li><code>componentWillReceiveProps(...)</code></li>
-						<li class="fragment visible highlight-green"><code>shouldComponentUpdate(...)</code></li>
-						<li><code>componentWillUpdate(...)</code></li>
-						<li><code>componentDidUpdate(...)</code></li>
-						<li><code>componentWillUnmount()</code></li>
-					</ul>
-				</section>
+            <section>
+                <!-- 10 min -->
+                <h2>State</h2>
 
-				<section>
-					<h1>?</h1>
-				</section>
-				<section>
-					<h1>:)</h1>
-				</section>
-			</div>
+                <pre>
+                    <code class="language-jsx">
+class MyComponent extends React.Component {
+    constructor() {
+        this.state = {
+            myValue: ''
+        };
+    }
 
-		</div>
+    handleChange(event) {
+        this.setState({
+            myValue: event.target.value
+        });
+    }
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    render() { // som forrige slide }
+}
+                    </code>
+                </pre>
 
-		<script>
+            </section>
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+            <section>
+                <!-- 3 min -->
+                <h2>State - reconciliation</h2>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+                <img src="imgs/should-component-update.png" />
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+                <aside class="notes">
+                    <ul>
+                        <li>O(n) kjøretid for oppdateringer</li>
+                    </ul>
+                </aside>
+            </section>
 
-		</script>
+            <section>
+                <!-- 25 min -->
+                <h2>Oppgave 7 - state og events</h2>
 
-	</body>
+                <p>Implementer mulighet for å legge til filmer</p>
+
+                <p class="hints">Hint/forslag:</p>
+
+                <ul>
+                    <li>Legg til et inputfelt og en <code>&lt;button&gt;</code> i <code>&lt;MovieList&gt;</code></li>
+                    <li>Sett opp initiell state i <code>constructor()</code></li>
+                    <li>Initiell state kan inkludere både lista med filmer og tekst i inputfeltet</li>
+                    <li>Bruk <code>this.setState({ ... })</code> i <code>handleChange()</code> til å oppdatere inputfelt-verdi</li>
+                    <li>Bruk <code>onChange={ ... }</code> og <code>value={ ... } på input-elementet</code>
+                    <li>Bruk <code>onClick={ ... }</code> på button-elementet for å legge til film i lista</code>
+                </ul>
+
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>Moduler</h2>
+
+                <pre>
+                    <code class="language-javascript">
+import ReactDOM from 'react-dom';
+import MyComponent from './my-component';
+                    </code>
+                </pre>
+
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>Webpack</h2>
+
+                <img style="background-color: white;" src="imgs/what-is-webpack.png" />
+                <aside class="notes">
+                    <ul>
+                        <li>Kun browser</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <!-- ??? min -->
+                <h2>Oppgave 8 - Webpack</h2>
+
+                <p>Splitt opp hver komponent i egen fil og bruk Webpack for å pakke applikasjonen til én fil</p>
+
+                <p class="hints">Hint/forslag:</p>
+
+                <ul>
+                    <li>Ta utgangspunkt i <code>tasks/task-8-webpack</code></li>
+                    <li>Importer og render de nye filene i <code>tasks/task-8-webpack/src/app.js</code></li>
+                    <li>Bruk <code>npm run watch</code> for utvikling (husk å kjøre <code>npm install</code> først</li>
+                    <li>Bruk <code>npm run build</code> for å pakke scriptene for produksjon</li>
+                </ul>
+
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+    transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+    // Optional reveal.js plugins
+    dependencies: [
+    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/zoom-js/zoom.js', async: true },
+    { src: 'plugin/notes/notes.js', async: true }
+    ]
+    });
+
+    </script>
+
+    <script src="plugin/prism/prism.js"></script>
+    <link rel="stylesheet" href="plugin/prism/prism.css">
+
+</body>
 </html>
