@@ -44,6 +44,10 @@ pre {
     padding-bottom: 0 !important;
     line-height: 1 !important;
 }
+
+h2 {
+    text-transform: none !important;
+}
 </style>
 </head>
 
@@ -95,8 +99,19 @@ pre {
             </section>
 
             <section>
+                <img src="imgs/virtual_dom_diff.png" />
+
+                <aside class="notes">
+                    <ul>
+                        <li>Virtuell DOM</li>
+                        <li>Dataflyt</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
                 <!-- 5 min -->
-                <h2>Workshop 1</h2>
+                <h2>Verktøykasse workshop 1</h2>
                 <ul>
                     <li>React</li>
                     <li>ECMAScript 6</li>
@@ -114,10 +129,10 @@ pre {
 
             <section>
                 <!-- 1 min -->
-                <h2>Workshop 2</h2>
+                <h2>Verktøykasse workshop 2</h2>
                 <ul>
                     <li>Redux</li>
-                    <li>Testing med Ava</li>
+                    <li>Testing med AVA</li>
                 </ul>
                 <aside class="notes">
                     <ul>
@@ -126,14 +141,15 @@ pre {
                 </aside>
             </section>
 
+
             <section>
                 <!-- 5 min -->
                 <h2>Konsepter</h2>
 
                 <ul>
-                    <li><code>React.createClass()</code></li>
                     <li><code>React.createElement()</code></li>
                     <li><code>ReactDOM.render()</code></li>
+                    <li><code>React.createClass()</code></li>
                     <li>Props</li>
                     <li>State</li>
                     <li>Events</li>
@@ -259,6 +275,7 @@ var MyOwnHeaderComponent = React.createElement({
                 </pre>
                 <aside class="notes">
                     <ul>
+                        <li>Props sendes nedover i komponent-treet</li>
                     </ul>
                 </aside>
             </section>
