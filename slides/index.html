@@ -57,6 +57,7 @@ code {
 h2 {
     text-transform: none !important;
 }
+
 @keyframes tiny-pulse {
     0% {
      transform: scale(1, 1);
@@ -71,9 +72,27 @@ h2 {
     }
 }
 
+@keyframes pulse {
+    0% {
+     transform: scale(1, 1);
+    }
+
+    50% {
+     transform: scale(1.2, 1.2);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
 .tiny-pulsate {
     display: inline-block;
     animation: tiny-pulse 1s ease-in-out infinite;
+}
+.pulsate {
+    display: inline-block;
+    animation: pulse 1s ease-in-out infinite;
 }
 </style>
 </head>
@@ -871,6 +890,306 @@ import MyComponent from './my-component';
                 </ul>
 
             </section>
+
+            <section>
+                <img src="imgs/redux-logo-title-dark.png" style="background-color: #fff"/>
+            </section>
+
+            <section>
+                <h2>Historie</h2>
+
+                todo
+            </section>
+
+            <section>
+                <h2>Motivasjon</h2>
+
+                <ul>
+                    <li>Kontroll over state</li>
+                    <li>Forenkle asynkrone hendelser</li>
+                </ul>
+
+                ArrowDown
+
+                <p>Raskere utvikling av nye features</p>
+                <p>Færre bugs</p>
+
+                <aside class="notes">
+                    <ul>
+                        <li>State sentralisert, nyttig spesielt for state som skal deles</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Prinsipper</h2>
+
+                todo: vurder å lage bilder av dette
+
+                <ol>
+                    <li>State lagres i én enkelt store</li>
+                    <li>State i store er read-only</li>
+                </ol>
+
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Konsepter</h2>
+
+                <ol>
+                    <li>Store</li>
+                    <li>Actions</li>
+                    <li>Reducers</li>
+                </ol>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Data i store</h2>
+
+                <pre>
+                    <code class="language-javascript">
+{
+    movies: [
+        {id: 1, name: 'Blade Runner'},
+        {id: 2, name: 'Song Of The Sea'},
+        {id: 3, name: 'Mud'}
+    ],
+    cinemas: [
+        {id: 1, name: 'Klingenberg'},
+        {id: 2, name: 'Gimle'}
+    ]
+}
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Actions</h2>
+
+                <pre>
+                    <code class="language-javascript">
+{
+    type: 'ADD_MOVIE',
+    payload: {
+        id: 4,
+        name: 'Kung Fury'
+    }
+}
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Reducers</h2>
+
+                <pre>
+                    <code class="language-javascript">
+function movieReducer(state = initialState, action) {
+    switch (action.type) {
+        case 'ADD_MOVIE':
+            return [
+                ...state,
+                action.payload
+            ];
+        default:
+            return state;
+    }
+}
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Redux.createStore()</h2>
+
+                <pre>
+                    <code class="language-javascript">
+var myStore = Redux.createStore(myReducer);
+
+myStore.getState();
+myStore.subscribe(callback);
+myStore.dispatch(action);
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <pre>
+                    <code class="language-javascript">
+var myStore = Redux.createStore(myReducer);
+
+myStore.getState();
+myStore.subscribe(callback);
+myStore.dispatch(action);
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Oppgave 10 - reducer og actions</h2>
+
+                <pre>
+                    <code class="language-javascript">
+// todo, lag noen ava-tester som tester reducer og actions
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+            <h2>React&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇆&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="pulsate">?</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇆&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Redux</h2>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <img src="imgs/react-redux.png"/>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>... prøver oss selv først</h2>
+
+                <ol>
+                    <li>Lag en store</li>
+                    <li>Lag en react-komponent som tar i mot data fra store</li>
+                    <li>Render komponenten</li>
+                    <li>Re-render komponenten når store endres</li>
+                </ol>
+
+                <aside class="notes">
+const initialState = 0;
+function counterReducer(state = initialState, action) {
+    switch (action.type) {
+        case 'INCREMENT':
+            return state + 1;
+        default:
+            return state;
+    }
+}
+
+class MyComponent extends React.Component {
+    render() {
+        <div>Count {this.props.counter}</div>
+    }
+}
+
+const myStore = Redux.createStore(counterReducer);
+
+function render() {
+    const counter = myStore.getState();
+    ReactDOM.render(<MyComponent counter={counter}/>, document.getElementById('my-app'));
+}
+
+render();
+
+myStore.subscribe(() => {
+    render();
+});
+
+                </aside>
+            </section>
+
+            <section>
+                <h2>Reducer composition</h2>
+
+                todo
+
+                <pre>
+                    <code class="language-javascript">
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Nyttige lenker</h2>
+
+                <ul>
+                    <li>http://redux.js.org</li>
+                    <li>https://egghead.io/courses/getting-started-with-redux</li>
+                </ul>
+
+            </section>
+
+            <section>
+                <h2>WS2</h2>
+
+                <ul>
+                    <li>Bakgrunn for å bruke Redux. Nevn Flux og implementasjoner - http://redux.js.org/docs/introduction/Motivation.html</li>
+                    <li>Hva er Redux?</li>
+                    <li>Prinsipper i Redux http://redux.js.org/docs/introduction/ThreePrinciples.html </li>
+                    <li>Reduxkonsepter (actions, pure reducers, </li>
+                    <li>Hva gjenstår?</li>
+                    <li>Positive / negative sider med å bruke React + Redux</li>
+                    <li>Ressurser / linker for ws 2</li>
+                </ul>
+
+            </section>
+
         </div>
 
     </div>
