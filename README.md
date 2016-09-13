@@ -1,21 +1,14 @@
 Dette er presentasjon og materiale brukt for React-workshops holdt september 2016.
 
-Presentasjonen vises ved å åpne `slides/index.html`.
+- Presentasjonen vises ved å åpne `slides/index.html`.
+- Grunnlag for oppgaver ligger i `tasks`
 
-Ferdig resultat av kodebasen ligger under `code/0_basic` og `code/1_babel` for henholdsvis ES5 (plain JavaScript) og ES6 + JSX med Babel.
+Før workshop må node og npm installeres og ligge tilgjengelig på PATH. npm installeres i samme installasjon som node, se https://nodejs.org/en/ for lenker til nedlastinger.
 
-## ES5
+Versjon 4.x og 6.x fungerer med det vi skal gjøre i workshopen. Jeg setter derfor pris på om du oppgraderer dersom du har lavere versjon enn det.
 
-Det er tilstrekkelig å åpne `code/0_basic/index.html` rett i nettleser. Endringer gjøres i fila `code/0_basic/index.html` og vil vises ved en refresh av siden.
+node og npm skal legge seg på PATH automatisk ved installasjon, men det kan være variasjoner på ulike operativsystem. Åpne en terminal i forkant av workshop for å sjekke om du har fått installert korrekt og du har en versjon som er enten 4.x eller 6.x. Dersom du får "command not found", eller tilsvarende må du oppdatere PATH. Send meg gjerne en e-post dersom du ikke får det til.
 
-## ES6 + JSX
+Under vises et eksempel hvor node og npm er korrekt installert og tilgjengelig:
 
-Siden Babel bruker XHR til å hente ned JS-filer må denne leveres via en webserver for å fungere. Hvis du har Python installert kan det gjøres enkelt slik:
-
-* `cd code/`
-* `python -mSimpleHTTPServer` (Python 2)
-* `python -m http.server` (Python 3)
-
-Åpne http://localhost:8000 og naviger inn i mappa `1_babel`.
-
-Endringer gjøres i `code/1_babel/app.js` og vil vises ved en refresh av siden.
+![command](https://raw.githubusercontent.com/kmkr/react-ws/master/slides/imgs/terminal.png)
