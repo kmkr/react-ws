@@ -267,7 +267,7 @@ React.createElement(MyOwnHeaderComponent, {yourName: "Kris-Mikael"});
 
                 <pre>
                     <code class="language-jsx">
-var MyOwnHeaderComponent = React.createElement({
+var MyOwnHeaderComponent = React.createClass({
     render: function () {
         var name = this.props.yourName;
         // ...
@@ -297,7 +297,7 @@ var MyOwnHeaderComponent = React.createElement({
                 </ul>
                 <pre>
                     <code class="language-jsx">
-var MyOwnHeaderComponent = React.createElement({
+var MyOwnHeaderComponent = React.createClass({
     render: function () {
         var name = this.props.yourName;
         // ...
