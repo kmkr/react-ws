@@ -103,7 +103,9 @@ h2 {
 
                 <aside class="notes">
                     <ul>
+                        <li>Komponenter i en trestruktur</li>
                         <li>Virtuell DOM</li>
+                        <li>React sjekker om den virtuelle DOM-en er endret, og flusher kun endringene til DOM</li>
                         <li>Dataflyt</li>
                     </ul>
                 </aside>
@@ -140,7 +142,6 @@ h2 {
                     </ul>
                 </aside>
             </section>
-
 
             <section>
                 <!-- 5 min -->
@@ -231,6 +232,7 @@ ReactDOM.render(...);
                 </pre>
                 <aside class="notes">
                     <ul>
+                        <li>createClass gir en funksjon</li>
                     </ul>
                 </aside>
             </section>
@@ -276,6 +278,8 @@ var MyOwnHeaderComponent = React.createElement({
                 <aside class="notes">
                     <ul>
                         <li>Props sendes nedover i komponent-treet</li>
+                        <li>Props tilsvarer hva argumenter gjør til funksjoner</li>
+                        <li>Props er sentralt i React - komponenter/funksjoner tar inn data og returnerer et view</li>
                     </ul>
                 </aside>
             </section>
@@ -358,7 +362,7 @@ ReactDOM.render(myElem, ...)
 
             <section>
                 <!-- 5 min -->
-                <h2>Vilkårlig JavaScript i <code>render()</code></h2>
+                <h2>JavaScript i <code>render()</code></h2>
 
                 <pre>
                     <code class="language-jsx">
@@ -494,14 +498,16 @@ class Header extends React.Component {
                 <ol>
                     <li>Installer node</li>
                     <li>Kjør <code>npm init</code></li>
-                    <li>Installer babel med <code>npm install</code></li>
+                    <li>Installer babel med <code>npm install --save-dev</code></li>
                     <li>Et par linjer i <code>.babelrc</code></li>
                 </ol>
 
-                <p>Good to go, kjør babel med node!</p>
+                <p>Good to go, du kan nå kjøre babel med node!</p>
 
                 <aside class="notes">
                     <ul>
+                        <li>Vis npm, node_modules. Forklar --save som skriver til package.json og årsaken</li>
+                        <li>Ikke sjekk inn node_modules</li>
                         <li>Vis feilmeldinger (f.eks unterminated JSX)</li>
                     </ul>
                 </aside>
