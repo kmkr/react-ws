@@ -15,6 +15,8 @@
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <script src="../tasks/libs/react/react.js"></script>
+    <script src="../tasks/libs/react/react-dom.js"></script>
 
     <!-- Printing and PDF exports -->
     <script>
@@ -30,6 +32,9 @@
 <![endif]-->
 
 <style>
+body {
+    font-family: 'Ubuntu';
+}
 ul li, .hints {
     font-size: 0.7em !important;
 }
@@ -43,6 +48,10 @@ pre {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     line-height: 1 !important;
+}
+
+code {
+    line-height: 1.4 !important;
 }
 
 h2 {
@@ -102,9 +111,9 @@ h2 {
                         <li>Kun view - betyr at biblioteket tar for seg ett ansvarsområde</li>
                         <li>Virtuell DOM - den største nytenkningen som React kom med, og også primærårsaken til at det er så raskt som det er. Kommer tilbake til den.</li>
                         <li>Konsist API - raskt så sette seg inn i grunnleggende React, surface på API-et er lite og dokumentasjonen er god</li>
-                        <li>Dataflyt én vei, mer et konsept enn noe React fant opp, men som ikke har vært like enkelt å få til i andre rammeverk. En årsak er ytelse, dersom man gjør en endring i applikasjonen som må delegeres nedover i et stort komponent-tre kan det fort bli kostbart når man forholder seg til DOM-en. Alternativet har tradisjonelt vært å optimalisere endringer ved å oppdatere DOM via events, via watches, eller direkte. Det fungerer absolutt, men kan gå ut over lesbarheten og etter hvert gjør det vanskelig å forstå hvordan en stor applikasjon henger sammen.
+                        <li>Dataflyt én vei, mer et konsept enn noe React fant opp, men som ikke har vært like enkelt å få til i andre rammeverk. En årsak er ytelse, dersom man gjør en endring i applikasjonen som må delegeres nedover i et stort komponent-tre kan det fort bli kostbart når man forholder seg til DOM-en. Alternativet har tradisjonelt vært å optimalisere endringer ved å oppdatere DOM via events, watches, eller direkte akkurat der det tregs. Det fungerer absolutt, men kan gå ut over lesbarheten og etter hvert gjør det vanskelig å forstå hvordan en stor applikasjon henger sammen fordi ting skjer på så mange måter.
 
-                        React legger opp til at data går én vei og den virtuelle DOM-en gjør at vi kan skrive kode hvor endringer i et stort komponent-tre effektivt flyter gjennom.</li>
+                        React legger opp til at data går én vei og den virtuelle DOM-en gjør at vi kan skrive kode hvor endringer i et stort komponent-tre effektivt flyter gjennom. En endring vil da flyte gjennom treet og DOM-oppdateringer skjer kun der som tilstanden faktisk har endret seg</li>
                     </ul>
                 </aside>
             </section>
@@ -116,24 +125,77 @@ h2 {
                     <ul>
                         <li>La oss se på dette eksempelet. Her har vi en trestruktur som representerer en virtuell DOM. Den virtuelle DOM-en mapper til HTML i den ekte DOM-en.</li>
                         <li>La oss si at det skjer noen endringer i applikasjonen. F.eks brukeren trykker på et eller annet, eller skriver noe i et tekstfelt, eller data kommer tilbake fra server</li>
-                        <li>React sjekker om den virtuelle DOM-en er endret, og flusher kun endringene til DOM</li>
+                        <li>React sjekker hvorvidt sin egen interne modell, den virtuelle DOM-en, er endret, og flusher kun de tingene som er endret til DOM</li>
                         <li>Dette er essensen av virtuell DOM, og overordnet hva som gjør at React skiller seg ut fra tradisjonelle bibliotek</li>
                     </ul>
                 </aside>
             </section>
 
             <section>
-                <div><img src="imgs/thinking-in-react-components.png"/></div>
+                <div style="margin: 0 auto; width: 60%; padding: 20px; background-color: #fff; color: #111; font-size: 0.6em">
+                    <div id="filterableproducttable-wrapper"></div>
+                </div>
+
+
+                <script src="filterableproducttable/dist/my-app.js"></script>
 
                 <ul>
-                    <li>FilterableProductTable (oransje): inneholder hele eksempelapplikasjonen</li>
-                    <li>SearchBar (blå): mottar input til filtrering</li>
-                    <li>ProductTable (grønn): viser og filtrerer data basert på input</li>
-                    <li>ProductCategoryRow (turkis): viser en heading for hver kategori</li>
-                    <li>ProductRow (rød): viser en rad med informasjon om hvert produkt</li>
+                    <li id="filterableproducttable" class="fragment current-visible">FilterableProductTable (oransje): inneholder hele eksempelapplikasjonen</li>
+                    <li id="searchbar" class="fragment current-visible">SearchBar (blå): mottar input til filtrering</li>
+                    <li id="producttable" class="fragment current-visible">ProductTable (grønn): viser og filtrerer data basert på input</li>
+                    <li id="productcategoryrow" class="fragment current-visible">ProductCategoryRow (turkis): viser en heading for hver kategori</li>
+                    <li id="productrow" class="fragment current-visible">ProductRow (rød): viser en rad med informasjon om hvert produkt</li>
+                    <li class="fragment current-visible" style="display: none"></li>
                 </ul>
 
-                <a style="font-size: 0.4em; text-align: left;" href="https://facebook.github.io/react/docs/thinking-in-react.html">https://facebook.github.io/react/docs/thinking-in-react.html</a>
+                <script>
+                    (function () {
+                        var previous;
+
+                        function foo(name, borderColor, forceColor) {
+                            var elementsInTable = document.querySelectorAll('.' + name);
+                            var elementInList = document.getElementById(name);
+
+                            var border = '0';
+                            if (elementInList.className.match('current-fragment') || forceColor) {
+                                border = '3px solid ' + borderColor;
+                                previous = name;
+                            }
+                            elementsInTable.forEach(function (elementInTable) {
+                                elementInTable.style.border = border;
+                            });
+
+                        }
+                        document.addEventListener('keyup', function (e) {
+                            if (e.keyCode === 39 || e.keyCode === 37) {
+                                var forceColor = previous === 'productrow' && e.keyCode === 39;
+                                foo('filterableproducttable', 'orange', forceColor);
+                                foo('searchbar', 'blue', forceColor);
+                                foo('producttable', 'green', forceColor);
+                                foo('productcategoryrow', 'turquoise', forceColor);
+                                foo('productrow', 'red', forceColor);
+                            }
+                        });
+                    }());
+                </script>
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <img src="imgs/filterable-product-table.svg"/>
+                <aside class="notes">
+                    digraph G {
+                        "FilterableProductTable" -> "SearchBar"
+                        "FilterableProductTable" -> "ProductTable"
+                        "ProductTable" -> "ProductCategoryRow1"
+                        "ProductTable" -> "ProductCategoryRow2"
+                        "ProductCategoryRow1" -> "ProductRow1"
+                        "ProductCategoryRow1" -> "ProductRow2"
+                        "ProductCategoryRow1" -> "ProductRow3"
+                        "ProductCategoryRow2" -> "ProductRow4"
+                        "ProductCategoryRow2" -> "ProductRow5"
+                    }
+                </aside>
             </section>
 
                 <!--
@@ -199,6 +261,7 @@ React.createElement(MyOwnHeaderComponent, null);
                 </pre>
                 <aside class="notes">
                     <ul>
+                    <li></li>
                     </ul>
                 </aside>
             </section>
