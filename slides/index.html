@@ -60,6 +60,7 @@ h2 {
                     <small><a href="mailto:kris-mikael.krister@webstep.no">kris-mikael.krister@webstep.no</a></small>
                 </p>
                 <aside class="notes">
+                    Hei og velkommen til den første av to React-workshops. I kveld kommer jeg til å gi en introduksjon til React og dere kommer selv til å prøve det ut.
                 </aside>
             </section>
 
@@ -72,13 +73,18 @@ h2 {
                     <li>Konsepter i React (med oppgaver)</li>
                     <li>JSX (med oppgaver)</li>
                     <li>State og events (med oppgaver)</li>
-                    <li>Webpack (med oppgaver)</li>
+                    <li>Webpack (med oppgaver, hvis vi rekker)</li>
                 </ul>
 
                 <aside class="notes">
                     <ul>
                     </ul>
                 </aside>
+            </section>
+
+            <section>
+                <div><img src="imgs/react-ui.png"/></div>
+                <div><img src="imgs/react-stats.png"/></div>
             </section>
 
             <section>
@@ -93,31 +99,49 @@ h2 {
 
                 <aside class="notes">
                     <ul>
-                        <li>Synker DOM med dine data</li>
+                        <li>Kun view - betyr at biblioteket tar for seg ett ansvarsområde</li>
+                        <li>Virtuell DOM - den største nytenkningen som React kom med, og også primærårsaken til at det er så raskt som det er. Kommer tilbake til den.</li>
+                        <li>Konsist API - raskt så sette seg inn i grunnleggende React, surface på API-et er lite og dokumentasjonen er god</li>
+                        <li>Dataflyt én vei, mer et konsept enn noe React fant opp, men som ikke har vært like enkelt å få til i andre rammeverk. En årsak er ytelse, dersom man gjør en endring i applikasjonen som må delegeres nedover i et stort komponent-tre kan det fort bli kostbart når man forholder seg til DOM-en. Alternativet har tradisjonelt vært å optimalisere endringer ved å oppdatere DOM via events, via watches, eller direkte. Det fungerer absolutt, men kan gå ut over lesbarheten og etter hvert gjør det vanskelig å forstå hvordan en stor applikasjon henger sammen.
+
+                        React legger opp til at data går én vei og den virtuelle DOM-en gjør at vi kan skrive kode hvor endringer i et stort komponent-tre effektivt flyter gjennom.</li>
                     </ul>
                 </aside>
             </section>
 
             <section>
-                <img src="imgs/virtual_dom_diff.png" />
+                <img src="imgs/should-component-update.png" />
 
                 <aside class="notes">
                     <ul>
-                        <li>Komponenter i en trestruktur</li>
-                        <li>Virtuell DOM</li>
+                        <li>La oss se på dette eksempelet. Her har vi en trestruktur som representerer en virtuell DOM. Den virtuelle DOM-en mapper til HTML i den ekte DOM-en.</li>
+                        <li>La oss si at det skjer noen endringer i applikasjonen. F.eks brukeren trykker på et eller annet, eller skriver noe i et tekstfelt, eller data kommer tilbake fra server</li>
                         <li>React sjekker om den virtuelle DOM-en er endret, og flusher kun endringene til DOM</li>
-                        <li>Dataflyt</li>
+                        <li>Dette er essensen av virtuell DOM, og overordnet hva som gjør at React skiller seg ut fra tradisjonelle bibliotek</li>
                     </ul>
                 </aside>
             </section>
 
             <section>
-                <!-- 5 min -->
+                <div><img src="imgs/thinking-in-react-components.png"/></div>
+
+                <ul>
+                    <li>FilterableProductTable (oransje): inneholder hele eksempelapplikasjonen</li>
+                    <li>SearchBar (blå): mottar input til filtrering</li>
+                    <li>ProductTable (grønn): viser og filtrerer data basert på input</li>
+                    <li>ProductCategoryRow (turkis): viser en heading for hver kategori</li>
+                    <li>ProductRow (rød): viser en rad med informasjon om hvert produkt</li>
+                </ul>
+
+                <a style="font-size: 0.4em; text-align: left;" href="https://facebook.github.io/react/docs/thinking-in-react.html">https://facebook.github.io/react/docs/thinking-in-react.html</a>
+            </section>
+
+                <!--
+            <section>
                 <h2>Verktøykasse workshop 1</h2>
                 <ul>
                     <li>React</li>
-                    <li>ECMAScript 6</li>
-                    <li>JSX</li>
+                    <li>JSX og ECMAScript 6</li>
                     <li>Babel</li>
                     <li>Node og npm</li>
                     <li>Webpack (hvis vi rekker)</li>
@@ -130,11 +154,10 @@ h2 {
             </section>
 
             <section>
-                <!-- 1 min -->
                 <h2>Verktøykasse workshop 2</h2>
                 <ul>
                     <li>Redux</li>
-                    <li>Testing med AVA</li>
+                    <li>Testing</li>
                 </ul>
                 <aside class="notes">
                     <ul>
@@ -142,6 +165,7 @@ h2 {
                     </ul>
                 </aside>
             </section>
+                1 min -->
 
             <section>
                 <!-- 5 min -->
@@ -672,6 +696,7 @@ import MyComponent from './my-component';
 
                 <ul>
                     <li>https://facebook.github.io/react/docs/getting-started.html</li>
+                    <li>https://facebook.github.io/react/docs/thinking-in-react.html</li>
                     <li>http://courses.reactjsprogram.com/courses/reactjsfundamentals</li>
                 </ul>
 
