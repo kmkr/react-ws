@@ -69,7 +69,11 @@ h2 {
                     <small><a href="mailto:kris-mikael.krister@webstep.no">kris-mikael.krister@webstep.no</a></small>
                 </p>
                 <aside class="notes">
-                    Hei og velkommen til den første av to React-workshops. I kveld kommer jeg til å gi en introduksjon til React og dere kommer selv til å prøve det ut.
+                    Hei og velkommen til den første av to React-workshops.
+
+                    Intro med navn, bakgrunn.
+
+                    I kveld kommer jeg til å gi en introduksjon til React og dere kommer selv til å prøve det ut.
                 </aside>
             </section>
 
@@ -78,7 +82,6 @@ h2 {
                 <h2>Agenda</h2>
                 <ul>
                     <li>Overordnet React</li>
-                    <li>Verktøykasse vi tar i bruk</li>
                     <li>Konsepter i React (med oppgaver)</li>
                     <li>JSX (med oppgaver)</li>
                     <li>State og events (med oppgaver)</li>
@@ -124,9 +127,10 @@ h2 {
                 <aside class="notes">
                     <ul>
                         <li>La oss se på dette eksempelet. Her har vi en trestruktur som representerer en virtuell DOM. Den virtuelle DOM-en mapper til HTML i den ekte DOM-en.</li>
+                        <li>Hver av nodene i treet er et React-element. Et eksempel på et slikt element fra en webshop-applikasjon kan være ProductRow, eller ProductTable</li>
                         <li>La oss si at det skjer noen endringer i applikasjonen. F.eks brukeren trykker på et eller annet, eller skriver noe i et tekstfelt, eller data kommer tilbake fra server</li>
                         <li>React sjekker hvorvidt sin egen interne modell, den virtuelle DOM-en, er endret, og flusher kun de tingene som er endret til DOM</li>
-                        <li>Dette er essensen av virtuell DOM, og overordnet hva som gjør at React skiller seg ut fra tradisjonelle bibliotek</li>
+                        <li>Dette er essensen av virtuell DOM, og primært hva som gjør at React skiller seg ut fra tradisjonelle bibliotek</li>
                     </ul>
                 </aside>
             </section>
@@ -184,6 +188,7 @@ h2 {
                         <li>La oss se på et mer konkret eksempel. Dette er skrevet i React og er bygget opp som et komponent-tre</li>
                         <li>Vis hvordan den fungerer</li>
                         <li>.. så forklar de ulike komponentene</li>
+                        <li>Nevn av hver komponent har så få ansvarsområder som mulig for å fremme lesbarhet og mulighet for gjenbruk</li>
                     </ul>
                 </aside>
             </section>
@@ -264,7 +269,7 @@ h2 {
                     <code class="language-jsx">
 React.createElement("div", null, "Hei på deg!");
 
-React.createElement(MyOwnHeaderComponent, null);
+React.createElement(MyOwnHeaderComponent);
                     </code>
                 </pre>
                 <aside class="notes">
@@ -441,7 +446,7 @@ ReactDOM.render(myElem, ...)
 
             <section>
                 <!-- 15 min -->
-                <h2>Oppgave 4 - react root</h2>
+                <h2>Oppgave 4 - Liste over filmer</h2>
 
                 <p>Lag en ny komponent - MovieList - og render den til DOM</p>
 
