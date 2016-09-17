@@ -73,7 +73,7 @@ h2 {
 
                     Intro med navn, bakgrunn.
 
-                    I kveld kommer jeg til å gi en introduksjon til React og dere kommer selv til å prøve det ut.
+                    I kveld kommer jeg til å gi en introduksjon til React og dere kommer selv til å prøve det ut. ... neste slide
                 </aside>
             </section>
 
@@ -112,11 +112,13 @@ h2 {
                 <aside class="notes">
                     <ul>
                         <li>Kun view - betyr at biblioteket tar for seg ett ansvarsområde</li>
-                        <li>Virtuell DOM - den største nytenkningen som React kom med, og også primærårsaken til at det er så raskt som det er. Kommer til å snakke en del om virtuell dom i workshopen.</li>
-                        <li>Konsist API - raskt så sette seg inn i grunnleggende React, surface på API-et er lite og dokumentasjonen er god</li>
-                        <li>Dataflyt én vei, mer et konsept enn noe React fant opp, men som ikke har vært like enkelt å få til i andre rammeverk. En årsak er ytelse, dersom man gjør en endring i applikasjonen som må delegeres nedover i et stort komponent-tre kan det fort bli kostbart når man forholder seg til DOM-en. Alternativet har tradisjonelt vært å optimalisere endringer ved å oppdatere DOM via events, watches, eller direkte akkurat der det tregs. Det fungerer absolutt, men kan gå ut over lesbarheten og etter hvert gjør det vanskelig å forstå hvordan en stor applikasjon henger sammen fordi ting skjer på så mange måter.
+                        <li>Virtuell DOM - den største nytenkningen React kom med, og primærårsaken til at det er så raskt som det er. Kommer til å snakke en del om virtuell dom i workshopen.</li>
+                        <li>Konsist API - raskt å sette seg inn i grunnleggende React, surface på API-et er lite og dokumentasjonen er god</li>
+                        <li>Dataflyt én vei, mer et konsept enn noe React fant opp, men som ikke har vært like enkelt å få til i andre rammeverk på grunn av at det kan medføre at potensielt hele applikasjonen må rendres på nytt. En endring som må delegeres nedover i et stort komponent-tre kan det fort bli kostbart når man forholder seg til DOM-en.
 
                         React legger opp til at data går én vei og den virtuelle DOM-en gjør at vi kan skrive kode hvor endringer i et stort komponent-tre effektivt flyter gjennom selv om potensielt hver eneste komponent kalkuleres på nytt. En endring vil da flyte gjennom treet og DOM-oppdateringer skjer kun der som tilstanden faktisk har endret seg</li>
+
+                        <li>>En-veis dataflyt gjør at man kan redusere tilstand i applikasjonen sin, og sentralisere den tilstanden man har. Det igjen bidrar til å øke forståelsen og lesbarheten for kodebasen, og dermed også færre bugs og raskere utvikling</li>
                     </ul>
                 </aside>
             </section>
@@ -126,9 +128,8 @@ h2 {
 
                 <aside class="notes">
                     <ul>
-                        <li>La oss se på dette eksempelet. Her har vi en trestruktur som representerer en virtuell DOM. Den virtuelle DOM-en mapper til HTML i den ekte DOM-en.</li>
-                        <li>Hver av nodene i treet er et React-element. Et eksempel på et slikt element fra en webshop-applikasjon kan være ProductRow, eller ProductTable</li>
-                        <li>La oss si at det skjer noen endringer i applikasjonen. F.eks brukeren trykker på et eller annet, eller skriver noe i et tekstfelt, eller data kommer tilbake fra server</li>
+                        <li>La oss se på dette eksempelet. I React bygger man grensesnittet sitt som komponenter. En komponent kan være ProductTable, eller ProductRow. Disse komponentene vil ha hver sin virtuelle DOM-representasjon av et subsett av applikasjonen. Den virtuelle DOM-en mapper til HTML i den ekte DOM-en.</li>
+                        <li>La oss si at det skjer noen endringer i applikasjonen vi skal agere på. F.eks brukeren trykker på noe som fører til en hendelse, eller skriver noe i et tekstfelt, eller data kommer tilbake fra server</li>
                         <li>React sjekker hvorvidt sin egen interne modell, den virtuelle DOM-en, er endret, og flusher kun de tingene som er endret til DOM</li>
                         <li>Dette er essensen av virtuell DOM, og primært hva som gjør at React skiller seg ut fra tradisjonelle bibliotek</li>
                     </ul>
