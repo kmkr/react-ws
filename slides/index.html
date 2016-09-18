@@ -57,6 +57,24 @@ code {
 h2 {
     text-transform: none !important;
 }
+@keyframes tiny-pulse {
+    0% {
+     transform: scale(1, 1);
+    }
+
+    50% {
+     transform: scale(1.01, 1.01);
+    }
+
+    100% {
+    transform: scale(1, 1);
+    }
+}
+
+.tiny-pulsate {
+    display: inline-block;
+    animation: tiny-pulse 1s ease-in-out infinite;
+}
 </style>
 </head>
 
@@ -64,7 +82,7 @@ h2 {
     <div class="reveal">
         <div class="slides">
             <section>
-                <img src="imgs/react.svg" style="border: 0; background-color: transparent;"/>
+                <img class="tiny-pulsate" src="imgs/react.svg" style="border: 0; background-color: transparent;"/>
                 <p>
                     <small><a href="mailto:kris-mikael.krister@webstep.no">kris-mikael.krister@webstep.no</a></small>
                 </p>
