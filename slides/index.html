@@ -106,7 +106,7 @@ h2 {
                     <li>Kun view</li>
                     <li>Konsist API</li>
                     <li>Virtuell DOM</li>
-                    <li>Dataflyt én vei</li>
+                    <li>Komponentbasert</li>
                 </ul>
 
                 <aside class="notes">
@@ -114,13 +114,8 @@ h2 {
                         <li>Kun view - betyr at biblioteket tar for seg ett ansvarsområde</li>
                         <li>Konsist API - raskt å sette seg inn i grunnleggende React, surface på API-et er lite og dokumentasjonen er god</li>
                         <li>Virtuell DOM - den største nytenkningen React kom med, og primærårsaken til at det er så raskt som det er. Kommer til å snakke en del om virtuell dom i workshopen.</li>
-                        <li>Dataflyt én vei, et konsept som ikke React fant opp men som den virtuelle DOM-abstraksjonen gjør mulig i større grad enn før, uten at det går ut over ytelse.
+                        <li>Komponentbasert - en react-applikasjon er bygget opp av enheter med hvert sitt konkrete ansvarsområde.</li>
 
-                        Hver React-komponent har en render-funksjon som genererer en virtuell DOM. Dersom noe endres i applikasjonen kan denne funksjonen kalles på nytt, og i stedet for å naivt flushe hele endringen til DOM så kalkulerer React diff fra det som ble generert, og det som faktisk er i DOM.
-
-                        React er da i stand til å gjøre optimaliserte valg på hva som skal oppdateres.
-
-                        <li>>En-veis dataflyt gjør at man kan redusere tilstand i applikasjonen, og sentralisere den tilstanden man har. Det igjen bidrar til å øke forståelsen og lesbarheten for kodebasen, og dermed også færre bugs og raskere utvikling</li>
                     </ul>
                 </aside>
             </section>
@@ -133,7 +128,7 @@ h2 {
                         <li>La oss se på dette eksempelet. I React bygger man grensesnittet sitt som komponenter. En komponent kan være ProductTable, eller ProductRow. Disse komponentene vil ha hver sin virtuelle DOM-representasjon av et subsett av applikasjonen. Den virtuelle DOM-en mapper til HTML i den ekte DOM-en.</li>
                         <li>La oss si at det skjer noen endringer i applikasjonen vi skal agere på. F.eks brukeren trykker på noe som fører til en hendelse, eller skriver noe i et tekstfelt, eller data kommer tilbake fra server</li>
                         <li>React sjekker hvorvidt sin egen interne modell, den virtuelle DOM-en, er endret, og flusher kun de tingene som er endret til DOM</li>
-                        <li>Dette er essensen av virtuell DOM, og primært hva som gjør at React skiller seg ut fra tradisjonelle bibliotek</li>
+                        <li>Dette er essensen av virtuell DOM, og primært hva som gjør at React skiller seg ut fra tradisjonelle bibliotek. React er med dette i stand til å gjøre optimaliserte valg på hva som skal oppdateres.</li>
                     </ul>
                 </aside>
             </section>
