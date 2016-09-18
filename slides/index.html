@@ -1154,9 +1154,8 @@ myStore.subscribe(() => {
                 <pre>
                     <code class="language-javascript">
 // app.js
-import {createStore, applyMiddleware} from 'redux';
+import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import reduxLogger from 'redux-logger';
 
 // container-comp.js
 import {connect} from 'react-redux';
@@ -1170,9 +1169,22 @@ import {connect} from 'react-redux';
             <section>
                 <h2>Logger middleware (fortsett på task 10)</h2>
 
-                <ul>
-                    <li></li>
-                </ul>
+                <pre>
+                    <code class="language-javascript">
+// app.js
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import reduxLogger from 'redux-logger';
+
+// container-comp.js
+import {connect} from 'react-redux';
+
+const myStore = createStore(
+    myReducer,
+    applyMiddleware(reduxLogger())
+);
+                    </code>
+                </pre>
 
                 <aside class="notes">
                 </aside>
