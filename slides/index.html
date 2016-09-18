@@ -120,7 +120,7 @@ h2 {
 
                         React er da i stand til å gjøre optimaliserte valg på hva som skal oppdateres.
 
-                        <li>>En-veis dataflyt gjør at man kan redusere tilstand i applikasjonen sin, og sentralisere den tilstanden man har. Det igjen bidrar til å øke forståelsen og lesbarheten for kodebasen, og dermed også færre bugs og raskere utvikling</li>
+                        <li>>En-veis dataflyt gjør at man kan redusere tilstand i applikasjonen, og sentralisere den tilstanden man har. Det igjen bidrar til å øke forståelsen og lesbarheten for kodebasen, og dermed også færre bugs og raskere utvikling</li>
                     </ul>
                 </aside>
             </section>
@@ -198,18 +198,17 @@ h2 {
 
             <section>
                 <!-- 5 min -->
-                <img src="imgs/filterable-product-table.svg"/>
+                <img style="width: 130%; max-width: inherit; margin-left: -150px" src="imgs/filterable-product-table.svg"/>
                 <aside class="notes">
                     digraph G {
                         "FilterableProductTable" -> "SearchBar"
                         "FilterableProductTable" -> "ProductTable"
-                        "ProductTable" -> "ProductCategoryRow1"
-                        "ProductTable" -> "ProductCategoryRow2"
-                        "ProductCategoryRow1" -> "ProductRow1"
-                        "ProductCategoryRow1" -> "ProductRow2"
-                        "ProductCategoryRow1" -> "ProductRow3"
-                        "ProductCategoryRow2" -> "ProductRow4"
-                        "ProductCategoryRow2" -> "ProductRow5"
+                        "ProductTable" -> {"ProdCategoryRow1" "ProdRow1"}
+                        "ProductTable" -> "ProdRow2"
+                        "ProductTable" -> "ProdRow3"
+                        "ProductTable" -> "ProdCategoryRow2"
+                        "ProductTable" -> "ProdRow4"
+                        "ProductTable" -> "ProdRow5"
                     }
                 </aside>
             </section>
@@ -250,9 +249,9 @@ h2 {
                 <h2>Konsepter</h2>
 
                 <ul>
+                    <li><code>React.createClass()</code></li>
                     <li><code>React.createElement()</code></li>
                     <li><code>ReactDOM.render()</code></li>
-                    <li><code>React.createClass()</code></li>
                     <li>Props</li>
                     <li>State</li>
                     <li>Events</li>
