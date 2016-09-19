@@ -430,7 +430,7 @@ React.createElement(MyOwnHeaderComponent, {yourName: 'Ole Brumm'});
                 <!-- 5 min -->
                 <h2>React root</h2>
 
-                <p><code>React.createElement(...)</code> må returnere kun ett element</p>
+                <p><code>ReactDOM.render(...)</code> krever ett (og kun ett) element</p>
 
                 <img style="width: 50%" src="imgs/div-header-movielist.svg" />
 
@@ -485,7 +485,7 @@ ReactDOM.render(myElem, ...)
                     <code class="language-jsx">
 var favoriteHerbs = ['cilantro', 'basil', 'parsley'];
 
-React.createElement({
+React.createClass({
     render: function () {
         return React.createElement('ul', null, favoriteHerbs.map(function (herb) {
             return React.createElement('li', {key: herb}, herb);
