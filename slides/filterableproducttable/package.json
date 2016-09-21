@@ -2,7 +2,7 @@
   "name": "task-6-babel",
   "version": "1.0.0",
   "scripts": {
-    "build": "babel --watch src --out-dir dist/"
+    "build": "babel --watch src --out-dir out/"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
