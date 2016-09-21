@@ -1,6 +1,6 @@
 Dette er presentasjon og materiale brukt for React-workshops holdt september 2016.
 
-- Presentasjonen vises ved å åpne `slides/index.html`.
+- Presentasjonen vises ved å åpne `open-presentation.html`.
 - Grunnlag for oppgaver ligger i `tasks`
 
 Før workshop må node og npm installeres og ligge tilgjengelig på PATH. npm installeres i samme installasjon som node, se https://nodejs.org/en/ for lenker til nedlastinger.
