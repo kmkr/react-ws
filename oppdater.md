@@ -6,10 +6,14 @@
 	git pull
 	cd tasks/task-6-babel
 	npm install
+	cd tasks/task-8-webpack
+	npm install
 
 
 # Hvis du ikke har sjekket ut repoet
 
 	git clone https://github.com/kmkr/react-ws
 	cd react-ws/tasks/task-6-babel
+	npm install
+	cd tasks/task-8-webpack
 	npm install
