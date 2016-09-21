@@ -528,7 +528,7 @@ var Header = React.createClass({
         return React.createElement(
             "p",
             null,
-            "Hei " + this.props.name
+            "Hei " + this.props.yourName
         );
     }
 });
@@ -539,9 +539,58 @@ var Header = React.createClass({
                     <code class="language-jsx">
 class Header extends React.Component {
     render() {
-        return &lt;p&gt;Hei {this.props.name}&lt;/p&gt;;
+        return &lt;p&gt;Hei {this.props.yourName}&lt;/p&gt;;
     }
 }
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>JSX - innsending av props</h2>
+
+                <pre>
+                    <code class="language-jsx">
+class Header extends React.Component {
+    render() {
+        return &lt;p&gt;Hei {this.props.yourName}&lt;/p&gt;;
+    }
+}
+
+ReactDOM.render(
+    &lt;Header yourName="Kris-Mikael"/&gt;,
+    document.getElementById('my-app')
+);
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>JSX - JavaScript i <code>render()</code></h2>
+
+                <pre>
+                    <code class="language-jsx">
+
+class MyHerbs extends React.Component {
+    render() {
+        return (
+            &lt;ul&gt;
+                {this.props.herbs.map(function (herb) {
+                    return &lt;li&gt;{herb}&lt;/li&gt;;
+                })}
+            &lt;/ul&gt;
+        );
+    }
+}
+
+const favoriteHerbs = ['cilantro', 'parsley'];
+
+ReactDOM.render(
+    &lt;MyHerbs herbs={favoriteHerbs}/&gt;,
+    document.getElementById('my-app')
+);
                     </code>
                 </pre>
             </section>
