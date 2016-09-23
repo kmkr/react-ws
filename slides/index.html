@@ -724,6 +724,64 @@ class Header extends React.Component {
             </section>
 
             <section>
+                <h2>Fordeler og ulemper</h2>
+
+                <ul>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😒&nbsp;&nbsp;Må transpileres</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😱&nbsp;&nbsp;Mange måter å gjøre ting på</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">👾&nbsp;&nbsp;Hva skjer hvis WebComponents tar av?</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😎&nbsp;&nbsp;Enkelt API</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😆&nbsp;&nbsp;Høy ytelse</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😁&nbsp;&nbsp;Skalerer bra</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😺&nbsp;&nbsp;Stort community</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">🙌&nbsp;&nbsp;JSX&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;Views er JavaScript&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;Fail fast</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">💪&nbsp;&nbsp;Høy testbarhet og gjenbrukbarhet</li>
+                </ul>
+
+            </section>
+
+            <section>
+                <h2>Nyttige lenker</h2>
+
+                <ul>
+                    <li>https://facebook.github.io/react/docs/getting-started.html</li>
+                    <li>https://facebook.github.io/react/docs/thinking-in-react.html</li>
+                    <li>https://github.com/facebookincubator/create-react-app</li>
+                    <li>http://courses.reactjsprogram.com/courses/reactjsfundamentals</li>
+                </ul>
+
+            </section>
+
+            <section>
+                <img class="tiny-pulsate" src="imgs/react.svg" style="border: 0; background-color: transparent;"/>
+                <p>
+                    <small><a href="mailto:kris-mikael.krister@webstep.no">kris-mikael.krister@webstep.no</a></small>
+                </p>
+                <aside class="notes">
+                    Hei og velkommen til den andre og siste, for denne gang, React-workshops.
+
+                    Intro med navn, bakgrunn.
+
+                    Intro for kvelden...
+                </aside>
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>Agenda</h2>
+                <ul>
+                    <li>Fortsette med state og events (med oppgave)</li>
+                    <li>Webpack (med oppgave)</li>
+                    <li>Redux (med oppgave)</li>
+                </ul>
+
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
                 <!-- 10 min -->
                 <h2>Events</h2>
 
@@ -863,40 +921,18 @@ import MyComponent from './my-component';
             </section>
 
             <section>
-                <h2>Fordeler og ulemper</h2>
-
-                <ul>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😒&nbsp;&nbsp;Må transpileres</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😱&nbsp;&nbsp;Mange måter å gjøre ting på</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">👾&nbsp;&nbsp;Hva skjer hvis WebComponents tar av?</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😎&nbsp;&nbsp;Enkelt API</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😆&nbsp;&nbsp;Høy ytelse</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😁&nbsp;&nbsp;Skalerer bra</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😺&nbsp;&nbsp;Stort community</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">🙌&nbsp;&nbsp;JSX&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;Views er JavaScript&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;Fail fast</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">💪&nbsp;&nbsp;Høy testbarhet og gjenbrukbarhet</li>
-                </ul>
-
-            </section>
-
-            <section>
-                <h2>Nyttige lenker</h2>
-
-                <ul>
-                    <li>https://facebook.github.io/react/docs/getting-started.html</li>
-                    <li>https://facebook.github.io/react/docs/thinking-in-react.html</li>
-                    <li>https://github.com/facebookincubator/create-react-app</li>
-                    <li>http://courses.reactjsprogram.com/courses/reactjsfundamentals</li>
-                </ul>
-
-            </section>
-
-            <section>
                 <img src="imgs/redux-logo-title-dark.png" style="background-color: #fff"/>
             </section>
 
             <section>
-                <h2>Flux?</h2>
+                <h2>Flux</h2>
+
+                <img src="imgs/flux.png"/>
+
+            </section>
+
+            <section>
+                <h2>Fluximplementasjoner?</h2>
 
                 <span class="fragment">Fluxxor</span>
                 <span class="fragment" style="color: #ffd095">Flummox</span>
@@ -915,7 +951,8 @@ import MyComponent from './my-component';
 
             <section>
 
-            todo: noe om hvorfor redux vant
+            <img src="imgs/redux-live-react.png"/>
+
 
             </section>
 
@@ -925,24 +962,20 @@ import MyComponent from './my-component';
                 <ul>
                     <li>Kontroll over state</li>
                     <li>Forenkle asynkrone hendelser</li>
+                    <li>Mindre boilerplate</li>
                 </ul>
-
-                ArrowDown
-
-                <p>Raskere utvikling av nye features</p>
-                <p>Færre bugs</p>
 
                 <aside class="notes">
                     <ul>
-                        <li>State sentralisert, nyttig spesielt for state som skal deles</li>
+                        <li>Sentralisert state, nyttig spesielt for state som skal deles</li>
+                        <li>Raskere utvikling</li>
+                        <li>Færre bugs</li>
                     </ul>
                 </aside>
             </section>
 
             <section>
                 <h2>Prinsipper</h2>
-
-                todo: vurder å lage bilder av dette
 
                 <ol>
                     <li>State lagres i én enkelt store</li>
@@ -1042,23 +1075,13 @@ function movieReducer(state = initialState, action) {
 
                 <aside class="notes">
                     <ul>
-                        <li></li>
+                        <li>Noe om pure functions!</li>
                     </ul>
                 </aside>
             </section>
 
             <section>
-                <h2>Redux.createStore()</h2>
-
-                <pre>
-                    <code class="language-javascript">
-var myStore = Redux.createStore(myReducer);
-
-myStore.getState();
-myStore.subscribe(callback);
-myStore.dispatch(action);
-                    </code>
-                </pre>
+                <img src="imgs/redux-flow.gif" style="background-color: white"/>
 
                 <aside class="notes">
                     <ul>
@@ -1068,6 +1091,8 @@ myStore.dispatch(action);
             </section>
 
             <section>
+                <h2>Redux.createStore()</h2>
+
                 <pre>
                     <code class="language-javascript">
 var myStore = Redux.createStore(myReducer);
@@ -1167,16 +1192,25 @@ myStore.subscribe(() => {
             </section>
 
             <section>
-                <h2>Task 10 (redux + react)</h2>
+                <h2><code>react-redux</code></h2>
 
                 <pre>
                     <code class="language-javascript">
 // app.js
+import React from 'react';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
-// container-comp.js
-import {connect} from 'react-redux';
+const myStore = createStore(...);
+class App extends React.Component {
+    render() {
+        return (
+            &lt;Provider store={myStore}&gt;
+                // ...
+            &lt;/Provider&gt;
+        )
+    }
+}
                     </code>
                 </pre>
 
@@ -1185,22 +1219,19 @@ import {connect} from 'react-redux';
             </section>
 
             <section>
-                <h2>Logger middleware (fortsett på task 10)</h2>
+                <h2><code>react-redux</code></h2>
 
                 <pre>
                     <code class="language-javascript">
-// app.js
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
-import reduxLogger from 'redux-logger';
-
-// container-comp.js
+// movie-list.js
 import {connect} from 'react-redux';
+class MovieList extends React.Component {
+    render() {
+        return ...;
+    }
+}
 
-const myStore = createStore(
-    myReducer,
-    applyMiddleware(reduxLogger())
-);
+export default connect(...)(MovieList);
                     </code>
                 </pre>
 
@@ -1209,19 +1240,10 @@ const myStore = createStore(
             </section>
 
             <section>
-                <h2>Reducer composition</h2>
+                <h2>Task 10 (redux + react)</h2>
 
-                todo
-
-                <pre>
-                    <code class="language-javascript">
-                    </code>
-                </pre>
 
                 <aside class="notes">
-                    <ul>
-                        <li></li>
-                    </ul>
                 </aside>
             </section>
 
@@ -1231,21 +1253,6 @@ const myStore = createStore(
                 <ul>
                     <li>http://redux.js.org</li>
                     <li>https://egghead.io/courses/getting-started-with-redux</li>
-                </ul>
-
-            </section>
-
-            <section>
-                <h2>WS2</h2>
-
-                <ul>
-                    <li>Bakgrunn for å bruke Redux. Nevn Flux og implementasjoner - http://redux.js.org/docs/introduction/Motivation.html</li>
-                    <li>Hva er Redux?</li>
-                    <li>Prinsipper i Redux http://redux.js.org/docs/introduction/ThreePrinciples.html </li>
-                    <li>Reduxkonsepter (actions, pure reducers, </li>
-                    <li>Hva gjenstår?</li>
-                    <li>Positive / negative sider med å bruke React + Redux</li>
-                    <li>Ressurser / linker for ws 2</li>
                 </ul>
 
             </section>

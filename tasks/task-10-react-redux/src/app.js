@@ -4,34 +4,31 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import reduxLogger from 'redux-logger';
 
-import CountViewer from './count-viewer';
-
-function myReducer(state = 0, action) {
-    switch (action.type) {
-        case 'INCREMENT':
-            return state + 1;
-        default:
-            return state;
-    }
-}
+import movieReducer from './movies/movie-reducer';
+import Header from './header/header';
+import MovieList from './movies/list-movies';
 
 const myStore = createStore(
-    myReducer,
+    movieReducer,
     applyMiddleware(reduxLogger())
 );
 
 class MyApp extends Component {
-    increment() {
+    handleAddMovie(movieName) {
         myStore.dispatch({
-            type: 'INCREMENT'
+            type: 'ADD_MOVIE',
+            payload: {
+                name: movieName
+            }
         });
     }
+
     render() {
         return (
             <Provider store={myStore}>
                 <div>
-                    <CountViewer/>
-                    <button onClick={this.increment.bind(this)}>Inc</button>
+                    <Header yourName="Kris-Mikael"/>
+                    <MovieList handleAddMovie={this.handleAddMovie.bind(this)}/>
                 </div>
             </Provider>
         );
