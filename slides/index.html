@@ -98,7 +98,7 @@ h2 {
 </head>
 
 <body>
-    <div class="reveal">
+    <div class="reveal fade">
         <div class="slides">
             <section>
                 <img class="tiny-pulsate" src="imgs/react.svg" style="border: 0; background-color: transparent;"/>
@@ -723,22 +723,6 @@ class Header extends React.Component {
 
             </section>
 
-            <section>
-                <h2>Fordeler og ulemper</h2>
-
-                <ul>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😒&nbsp;&nbsp;Må transpileres</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😱&nbsp;&nbsp;Mange måter å gjøre ting på</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">👾&nbsp;&nbsp;Hva skjer hvis WebComponents tar av?</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😎&nbsp;&nbsp;Enkelt API</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😆&nbsp;&nbsp;Høy ytelse</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😁&nbsp;&nbsp;Skalerer bra</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😺&nbsp;&nbsp;Stort community</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">🙌&nbsp;&nbsp;JSX&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;Views er JavaScript&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;Fail fast</li>
-                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">💪&nbsp;&nbsp;Høy testbarhet og gjenbrukbarhet</li>
-                </ul>
-
-            </section>
 
             <section>
                 <h2>Nyttige lenker</h2>
@@ -904,18 +888,29 @@ import MyComponent from './my-component';
             </section>
 
             <section>
+                <pre>
+                    <code class="language-javascript">
+cd react-ws/tasks/task-8-webpack
+npm install
+                    </code>
+                </pre>
+
+
+            </section>
+
+            <section>
                 <!-- ??? min -->
                 <h2>Oppgave 8 - Webpack</h2>
 
-                <p>Splitt opp hver komponent i egen fil og bruk Webpack for å pakke applikasjonen til én fil</p>
+                <p>Splitt opp <code>Header</code> og <code>MovieList</code> i egne filer</p>
+                <p>Bruk Webpack for å "bundle" applikasjonen</p>
 
                 <p class="hints">Hint/forslag:</p>
 
                 <ul>
                     <li>Ta utgangspunkt i <code>tasks/task-8-webpack</code></li>
                     <li>Importer og render de nye filene i <code>tasks/task-8-webpack/src/app.js</code></li>
-                    <li>Bruk <code>npm run watch</code> for utvikling (husk å kjøre <code>npm install</code> først</li>
-                    <li>Bruk <code>npm run build</code> for å pakke scriptene for produksjon</li>
+                    <li>Bruk <code>npm run watch</code> for utvikling</li>
                 </ul>
 
             </section>
@@ -929,6 +924,347 @@ import MyComponent from './my-component';
 
                 <img src="imgs/flux.png"/>
 
+            </section>
+
+            <style type="text/css">
+                .state-app-example-wrapper {
+                    width: 840px !important;
+                    padding: 20px !important;
+                    background-color: #fff;
+                }
+                .state-app-example {
+                    margin: 0 auto !important;
+                    width: 800px !important;
+                    height: 350px !important;
+                    border: 1px solid black !important;
+                    position: relative !important;
+                    padding: 20px !important;
+                }
+
+                .state-app-example .rounded {
+                    border: 6px solid green !important;
+                    border-radius: 25px;
+                }
+
+                .state-app-example .loader {
+                    position: absolute !important;
+                    top: 200px !important;
+                    left: 370px !important;
+                }
+
+                .state-app-example .cart {
+                    border: 1px solid blue !important;
+                    text-align: right;
+                    color: black !important;
+                }
+
+                .state-app-example .error-message {
+                    margin-top: 10px !important;
+                    border: 1px solid purple !important;
+                    color: black !important;
+                    background-color: pink !important;
+                }
+
+                .state-app-example .cart .num-items {
+                    position: absolute;
+                    top: 40px;
+                    right: 90px;
+                }
+
+                .state-app-example table {
+                    margin-top: 10px !important;
+                }
+
+                .state-app-example td, .state-app-example th {
+                    color: black !important;
+                    font-size: 30px;
+                    border-bottom: 1px solid red !important;
+                }
+
+                .state-app-example tr {
+                    border: 1px solid red !important;
+                }
+            </style>
+
+            <section>
+                <h2>Motivasjon med et eksempel</h2>
+
+                <p>Marie skal kjøpe avokado</p>
+            </section>
+
+            <section>
+                <div class="state-app-example-wrapper">
+                    <div class="state-app-example">
+                        <img class="loader" src="imgs/hourglass.svg" />
+                    </div>
+                </div>
+                <p>Applikasjonen starter</p>
+                <ul>
+                    <li>Data lastes asynk</li>
+                    <li>Spinner vises</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="state-app-example-wrapper">
+                    <div class="state-app-example">
+                        <div>
+                            <div class="cart">
+                                <img src="imgs/cart.png" /><span class="num-items">(0)</span>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Pris</th>
+                                    <th>På lager</th>
+                                </tr>
+                                <tr>
+                                    <td>Avokado</td>
+                                    <td>150kr</td>
+                                    <td>5 stk</td>
+                                </tr>
+                                <tr>
+                                    <td>Palme</td>
+                                    <td>160kr</td>
+                                    <td>1 stk</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <p>Data lastet ferdig</p>
+                <ul>
+                    <li>Produkter vises med navn og lagerstatus</li>
+                    <li>Spinner stoppes</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="state-app-example-wrapper">
+                    <div class="state-app-example">
+                        <div>
+                            <div class="cart">
+                                <img src="imgs/cart.png"/><span class="num-items">(2)</span>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Pris</th>
+                                    <th>På lager</th>
+                                </tr>
+                                <tr>
+                                    <td>Avokado</td>
+                                    <td>150kr</td>
+                                    <td>3 stk</td>
+                                </tr>
+                                <tr>
+                                    <td>Palme</td>
+                                    <td>160kr</td>
+                                    <td>1 stk</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <p>Marie legger avokado til handlekurv.</p>
+                <ul>
+                    <li>Går et kall til server for å lagre handlekurven</li>
+                    <li>Handlekurv-ikon oppdateres optimistisk</li>
+                    <li>Lagerstatus oppdateres optimistisk</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="state-app-example-wrapper">
+                    <div class="state-app-example">
+                        <div>
+                            <div class="cart">
+                                <img src="imgs/cart.png"/><span class="num-items rounded">&nbsp;&nbsp;(2)&nbsp;&nbsp;</span>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Pris</th>
+                                    <th>På lager</th>
+                                </tr>
+                                <tr>
+                                    <td>Avokado</td>
+                                    <td>150kr</td>
+                                    <td>3 stk</td>
+                                </tr>
+                                <tr>
+                                    <td>Palme</td>
+                                    <td>160kr</td>
+                                    <td>1 stk</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <p>Marie ser at hun la til et produkt for mye</p>
+            </section>
+
+            <section>
+                <div class="state-app-example-wrapper">
+                    <div class="state-app-example">
+                        <div>
+                            <div class="cart">
+                                <img src="imgs/cart.png"/><span class="num-items">(1)</span>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Pris</th>
+                                    <th>På lager</th>
+                                </tr>
+                                <tr>
+                                    <td>Avokado</td>
+                                    <td>150kr</td>
+                                    <td>4 stk</td>
+                                </tr>
+                                <tr>
+                                    <td>Palme</td>
+                                    <td>160kr</td>
+                                    <td>1 stk</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <p>Marie fjerner det ene fra handlekurven</p>
+
+                <ul>
+                    <li>Går et kall til server for å frigjøre produktet fra handlekurven</li>
+                    <li>Handlekurv-ikon oppdateres optimistisk</li>
+                    <li>Lagerstatus oppdateres optimistisk</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="state-app-example-wrapper">
+                    <div class="state-app-example">
+                        <div>
+                            <div class="cart">
+                                <img src="imgs/cart.png"/><span class="num-items">(2)</span>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Pris</th>
+                                    <th>På lager</th>
+                                </tr>
+                                <tr>
+                                    <td>Avokado</td>
+                                    <td>150kr</td>
+                                    <td>4 stk</td>
+                                </tr>
+                                <tr>
+                                    <td>Palme</td>
+                                    <td>160kr</td>
+                                    <td>0 stk</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <p>Marie legger en palme til handlekurven.</p>
+                <ul>
+                    <li>Går et kall til server for å lagre handlekurven</li>
+                    <li>Handlekurv-ikon oppdateres optimistisk</li>
+                    <li>Lagerstatus oppdateres optimistisk</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="state-app-example-wrapper">
+                    <div class="state-app-example">
+                        <div>
+                            <div class="cart">
+                                <img src="imgs/cart.png"/><span class="num-items">(1)</span>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Pris</th>
+                                    <th>På lager</th>
+                                </tr>
+                                <tr>
+                                    <td>Avokado</td>
+                                    <td>150kr</td>
+                                    <td>4 stk</td>
+                                </tr>
+                                <tr>
+                                    <td>Palme</td>
+                                    <td>160kr</td>
+                                    <td>1 stk</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <p>Marie angrer før kallet er gjennomført, og fjerner palmen fra handlekurven.</p>
+                <ul>
+                    <li>Går et kall til server for å lagre handlekurven</li>
+                    <li>Handlekurv-ikon oppdateres optimistisk</li>
+                    <li>Lagerstatus oppdateres optimistisk</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="state-app-example-wrapper">
+                    <div class="state-app-example">
+                        <div>
+                            <div class="cart">
+                                <img src="imgs/cart.png"/><span class="num-items">(1)</span>
+                            </div>
+                            <div class="error-message">
+                                <p>Noe galt skjedde!</p>
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Pris</th>
+                                    <th>På lager</th>
+                                </tr>
+
+                                <tr>
+                                    <td>Avokado</td>
+                                    <td>150kr</td>
+                                    <td>4 stk</td>
+                                </tr>
+                                <tr>
+                                    <td>Palme</td>
+                                    <td>160kr</td>
+                                    <td>0 stk</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <p>Kallet feilet</p>
+                <ul>
+                    <li>Feilmelding vises</li>
+                    <li>Lagerstatus oppdateres</li>
+                    <li>Handlekurv-ikon må egentlig oppdateres - bug!</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Motivasjon</h2>
+
+                <ul>
+                    <li>Kontroll over state</li>
+                    <li>Forenkle asynkrone hendelser</li>
+                    <li>Mindre boilerplate</li>
+                </ul>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Sentralisert state, nyttig spesielt for state som skal deles</li>
+                        <li>Raskere utvikling</li>
+                        <li>Færre bugs</li>
+                    </ul>
+                </aside>
             </section>
 
             <section>
@@ -956,23 +1292,6 @@ import MyComponent from './my-component';
 
             </section>
 
-            <section>
-                <h2>Motivasjon</h2>
-
-                <ul>
-                    <li>Kontroll over state</li>
-                    <li>Forenkle asynkrone hendelser</li>
-                    <li>Mindre boilerplate</li>
-                </ul>
-
-                <aside class="notes">
-                    <ul>
-                        <li>Sentralisert state, nyttig spesielt for state som skal deles</li>
-                        <li>Raskere utvikling</li>
-                        <li>Færre bugs</li>
-                    </ul>
-                </aside>
-            </section>
 
             <section>
                 <h2>Prinsipper</h2>
@@ -1064,8 +1383,12 @@ function movieReducer(state = initialState, action) {
         case 'ADD_MOVIE':
             return [
                 ...state,
-                action.payload
+                action.payload.name
             ];
+        case 'REMOVE_MOVIE':
+            return state.filter(function (movieName) {
+                return movieName !== action.payload.name
+            });
         default:
             return state;
     }
@@ -1113,11 +1436,16 @@ myStore.dispatch(action);
             <section>
                 <h2>Oppgave 10 - reducer og actions</h2>
 
-                <pre>
-                    <code class="language-javascript">
-// todo, lag noen ava-tester som tester reducer og actions
-                    </code>
-                </pre>
+                <p>
+                    Implementer <code>ADD_MOVIE</code> action i <code>movie-reducer.js</code>
+                </p>
+
+                <p class="hints">Hint/forslag:</p>
+
+                <ul>
+                    <li>Ta utgangspunkt i <code>tasks/task-10-11-react-redux/src/movies/movie-reducer.test.js</code></li>
+                    <li>Kjør tester med <code>npm run test:watch</code></li>
+                </ul>
 
                 <aside class="notes">
                     <ul>
@@ -1194,6 +1522,19 @@ myStore.subscribe(() => {
             <section>
                 <h2><code>react-redux</code></h2>
 
+                <ul>
+                    <li><code>connect()</code></li>
+                    <li><code>&lt;Provider&gt;</code></li>
+                </ul>
+
+
+                <aside class="notes">
+                </aside>
+            </section>
+
+            <section>
+                <h2><code>react-redux</code></h2>
+
                 <pre>
                     <code class="language-javascript">
 // app.js
@@ -1240,19 +1581,38 @@ export default connect(...)(MovieList);
             </section>
 
             <section>
-                <h2>Task 10 (redux + react)</h2>
+                <h2>Oppgave 11 (redux + react)</h2>
 
+                ?????
 
                 <aside class="notes">
                 </aside>
             </section>
 
             <section>
+                <h2>Fordeler og ulemper</h2>
+
+                <ul>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😒&nbsp;&nbsp;Må transpileres</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😱&nbsp;&nbsp;Mange måter å gjøre ting på</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">👾&nbsp;&nbsp;Hva skjer hvis WebComponents tar av?</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😎&nbsp;&nbsp;Enkelt API</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😆&nbsp;&nbsp;Høy ytelse</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😁&nbsp;&nbsp;Skalerer bra</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">😺&nbsp;&nbsp;Stort community</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">🙌&nbsp;&nbsp;JSX&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;Views er JavaScript&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;Fail fast</li>
+                    <li class="fragment current-visible" style="font-size: 1.1em !important; list-style-type: none;">💪&nbsp;&nbsp;Høy testbarhet og gjenbrukbarhet</li>
+                </ul>
+
+            </section>
+
+            <section>
                 <h2>Nyttige lenker</h2>
 
                 <ul>
-                    <li>http://redux.js.org</li>
-                    <li>https://egghead.io/courses/getting-started-with-redux</li>
+                    <li><a href="http://redux.js.org">http://redux.js.org</a></li>
+                    <li><a href="https://egghead.io/courses/getting-started-with-redux">https://egghead.io/courses/getting-started-with-redux</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=xsSnOQynTH">https://www.youtube.com/watch?v=xsSnOQynTHs</a></li>
                 </ul>
 
             </section>

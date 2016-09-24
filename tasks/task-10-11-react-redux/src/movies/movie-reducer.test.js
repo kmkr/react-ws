@@ -11,6 +11,10 @@ function addMovie(movieName) {
     }
 }
 
+test('that the reducer is a function', t => {
+    t.true(typeof movieReducer === 'function');
+});
+
 test('that empty state is returned when using unknown action', t => {
     const unknownAction = {};
     const currentState = undefined;
