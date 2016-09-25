@@ -20,26 +20,31 @@ test('that empty state is returned when using unknown action', t => {
     const unknownAction = {};
     const currentState = undefined;
     const expectedState = {
-        list: []
+        list: [],
+        inputValue: ''
     };
-    t.deepEqual(movieReducer(currentState, unknownAction), expectedState);
+    const actualState = movieReducer(currentState, unknownAction);
+    t.deepEqual(actualState, expectedState);
 });
 
 test('correct state updates for one ADD_MOVIE action', t => {
     const action = createAddMovieAction('Blade Runner');
     const currentState = undefined;
     const expectedState = {
-        list: ['Blade Runner']
+        list: ['Blade Runner'],
+        inputValue: ''
     };
 
-    t.deepEqual(movieReducer(currentState, action), expectedState);
+    const actualState = movieReducer(currentState, action);
+    t.deepEqual(actualState, expectedState);
 });
 
 test('correct state updates for multiple ADD_MOVIE actions', t => {
     const firstState = movieReducer(undefined, createAddMovieAction('Turtles 1'));
     const secondState = movieReducer(firstState, createAddMovieAction('Turtles 2'));
     const expectedState = {
-        list: ['Turtles 1', 'Turtles 2']
+        list: ['Turtles 1', 'Turtles 2'],
+        inputValue: ''
     };
 
     t.deepEqual(secondState, expectedState);
