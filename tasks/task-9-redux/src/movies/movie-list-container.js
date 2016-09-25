@@ -5,21 +5,21 @@ import MovieList from './movie-list';
 
 class MovieListContainer extends Component {
     handleInputChange(input) {
-        // Oppgave 10e implementeres her
+        // Oppgave 9e implementeres her
         // Bruk this.props.dispatch(...) til å dispatche en action
 
         // ...
     }
 
     handleAddMovie(movieName) {
-        // Oppgave 10f implementeres her
+        // Oppgave 9f implementeres her
         // Bruk this.props.dispatch(...) til å dispatche en action
 
         // ...
     }
 
     render() {
-        // Oppgave 10f implementeres her ved å hente ut "movies" og "inputValue" fra props
+        // Oppgave 9f implementeres her ved å hente ut "movies" og "inputValue" fra props
         // Props er beriket med verdier fra mapStateToProps som du implementerte i forrige oppgave
         const movies = [];
         const inputValue = '';
@@ -35,7 +35,7 @@ class MovieListContainer extends Component {
 }
 
 function mapStateToProps(state) {
-    // Oppgave 10c implementeres her
+    // Oppgave 9c implementeres her
     // Input er state fra reduceren
     // Output (return value) er et objekt som brukes til å berike this.props i MovieListContainer
 

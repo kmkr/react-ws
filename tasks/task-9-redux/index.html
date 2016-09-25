@@ -3,86 +3,10 @@
 
 <html>
 <head>
-    <script src="../libs/react/react.js"></script>
-    <script src="../libs/react/react-dom.js"></script>
-    <script src="../libs/redux/redux.js"></script>
 </head>
 
 <body>
     <div id="my-app"></div>
-
-    <script type="text/javascript">
-        const initialState = [];
-        const movieReducer = (state = initialState, action) => {
-            switch (action.type) {
-            case 'ADD_FAVORITE_MOVIE':
-                 return [
-                    ...state,
-                    action.movieName
-                 ];
-            default:
-                return state;
-            }
-        };
-
-        const cinemaReducer = (state = initialState, action) => {
-            switch (action.type) {
-            case 'ADD_CINEMA':
-                return [
-                    ...state,
-                    {
-                        name: action.cinemaName,
-                        movies: action.movies || []
-                    }
-                ]
-            default:
-                return state;
-            }
-        }
-
-
-        const rootReducer = Redux.combineReducers({
-            favoriteMovies: movieReducer,
-            cinemas: cinemaReducer
-        });
-
-        const myStore = Redux.createStore(rootReducer);
-
-
-
-        const FavoriteMovies = React.createClass({
-            render: function () {
-                return React.createElement('ul', null, this.props.favoriteMovies.map(favoriteMovie => React.createElement('li', null, favoriteMovie)));
-            }
-        });
-
-
-        myStore.subscribe(() => {
-            console.log(myStore.getState());
-            const MyApp = React.createElement(
-                FavoriteMovies,
-                {favoriteMovies: myStore.getState().favoriteMovies}
-            );
-            ReactDOM.render(MyApp, document.getElementById('my-app'));
-        });
-
-        myStore.dispatch({
-            type: 'ADD_FAVORITE_MOVIE',
-            movieName: 'Star Wars'
-        });
-
-        myStore.dispatch({
-            type: 'ADD_FAVORITE_MOVIE',
-            movieName: 'Mad Max'
-        });
-
-        myStore.dispatch({
-            type: 'ADD_CINEMA',
-            cinemaName: 'Klingenberg',
-            movies: []
-        });
-
-    </script>
-
+    <script src="dist/app-bundle.js"></script>
 </body>
 </html>
