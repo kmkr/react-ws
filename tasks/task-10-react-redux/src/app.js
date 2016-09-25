@@ -14,15 +14,6 @@ const myStore = createStore(
 );
 
 class MyApp extends Component {
-    handleAddMovie(movieName) {
-        myStore.dispatch({
-            type: 'ADD_MOVIE',
-            payload: {
-                name: movieName
-            }
-        });
-    }
-
     render() {
         return (
             <Provider store={myStore}>

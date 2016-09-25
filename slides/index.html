@@ -919,13 +919,6 @@ npm install
                 <img src="imgs/redux-logo-title-dark.png" style="background-color: #fff"/>
             </section>
 
-            <section>
-                <h2>Flux</h2>
-
-                <img src="imgs/flux.png"/>
-
-            </section>
-
             <style type="text/css">
                 .state-app-example-wrapper {
                     width: 840px !important;
@@ -1250,22 +1243,22 @@ npm install
             </section>
 
             <section>
-                <h2>Motivasjon</h2>
+                <h2>Flux - motivasjon</h2>
 
                 <ul>
+                    <li>Deterministisk render av views</li>
                     <li>Kontroll over state</li>
-                    <li>Forenkle asynkrone hendelser</li>
-                    <li>Mindre boilerplate</li>
                 </ul>
 
-                <aside class="notes">
-                    <ul>
-                        <li>Sentralisert state, nyttig spesielt for state som skal deles</li>
-                        <li>Raskere utvikling</li>
-                        <li>Færre bugs</li>
-                    </ul>
-                </aside>
             </section>
+
+            <section>
+                <h2>Flux</h2>
+
+                <img src="imgs/flux.png"/>
+
+            </section>
+
 
             <section>
                 <h2>Fluximplementasjoner?</h2>
@@ -1292,6 +1285,24 @@ npm install
 
             </section>
 
+            <section>
+                <h2>Motivasjon for Redux</h2>
+
+                <ul>
+                    <li>Deterministisk render av views</li>
+                    <li>Sentralisert kontroll over state</li>
+                    <li>Forenkle asynkrone hendelser</li>
+                    <li>Mindre boilerplate</li>
+                </ul>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Sentralisert state, nyttig spesielt for state som skal deles</li>
+                        <li>Raskere utvikling</li>
+                        <li>Færre bugs</li>
+                    </ul>
+                </aside>
+            </section>
 
             <section>
                 <h2>Prinsipper</h2>
@@ -1326,20 +1337,41 @@ npm install
             </section>
 
             <section>
-                <h2>Data i store</h2>
-
                 <pre>
                     <code class="language-javascript">
 {
     movies: [
         {id: 1, name: 'Blade Runner'},
         {id: 2, name: 'Song Of The Sea'},
-        {id: 3, name: 'Mud'}
+        {id: 3, name: 'Megashark vs. Giant Octopus'}
     ],
     cinemas: [
-        {id: 1, name: 'Klingenberg'},
-        {id: 2, name: 'Gimle'}
+        {id: 1, name: 'Cinemateket', runningMovies: [1, 2]},
+        {id: 2, name: 'Ringen', runningMovies: [3]}
     ]
+}
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <pre>
+                    <code class="language-javascript">
+{
+    movies: {
+        list: [
+            'Blade Runner',
+            'Song Of The Sea',
+            'Mud'
+        ],
+        inputValue: 'Star Wa'
+    }
 }
                     </code>
                 </pre>
@@ -1359,8 +1391,28 @@ npm install
 {
     type: 'ADD_MOVIE',
     payload: {
-        id: 4,
         name: 'Kung Fury'
+    }
+}
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Actions</h2>
+
+                <pre>
+                    <code class="language-javascript">
+{
+    type: 'SET_INPUT_VALUE',
+    payload: {
+        value: 'Star Wa'
     }
 }
                     </code>
@@ -1378,17 +1430,20 @@ npm install
 
                 <pre>
                     <code class="language-javascript">
+const initialState = {
+    list: [],
+    inputValue: ''
+};
 function movieReducer(state = initialState, action) {
     switch (action.type) {
         case 'ADD_MOVIE':
-            return [
-                ...state,
-                action.payload.name
-            ];
-        case 'REMOVE_MOVIE':
-            return state.filter(function (movieName) {
-                return movieName !== action.payload.name
-            });
+            const movieName = action.payload.name;
+            // todo: Returner komplett state med den nye filmen inkludert
+            return {};
+        case 'SET_INPUT_VALUE':
+            const inputValue = action.payload.inputValue;
+            // todo: Returner komplett state med oppdatert verdi for inputValue
+            return {};
         default:
             return state;
     }
@@ -1399,6 +1454,49 @@ function movieReducer(state = initialState, action) {
                 <aside class="notes">
                     <ul>
                         <li>Noe om pure functions!</li>
+                    </ul>
+                </aside>
+            </section>
+
+
+            <section>
+                <h2>Oppgave 10a - reducer og actions</h2>
+
+                <p>
+                    Implementer <code>SET_INPUT_VALUE</code> action i <code>movie-reducer.js</code>
+                </p>
+
+                <p class="hints">Hint/forslag:</p>
+
+                <ul>
+                    <li>Kjør tester med <code>npm run test:watch</code></li>
+                    <li>Gjør én og én test grønn i <code>movie-reducer-set-input-value.test.js</code></li>
+                </ul>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Oppgave 10b - reducer og actions</h2>
+
+                <p>
+                    Implementer <code>ADD_MOVIE</code> action i <code>movie-reducer.js</code>
+                </p>
+
+                <p class="hints">Hint/forslag:</p>
+
+                <ul>
+                    <li>Kjør tester med <code>npm run test:watch</code></li>
+                    <li>Gjør én og én test grønn i <code>movie-reducer-add-movie.test.js</code></li>
+                </ul>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
                     </ul>
                 </aside>
             </section>
@@ -1425,27 +1523,6 @@ myStore.subscribe(callback);
 myStore.dispatch(action);
                     </code>
                 </pre>
-
-                <aside class="notes">
-                    <ul>
-                        <li></li>
-                    </ul>
-                </aside>
-            </section>
-
-            <section>
-                <h2>Oppgave 10 - reducer og actions</h2>
-
-                <p>
-                    Implementer <code>ADD_MOVIE</code> action i <code>movie-reducer.js</code>
-                </p>
-
-                <p class="hints">Hint/forslag:</p>
-
-                <ul>
-                    <li>Ta utgangspunkt i <code>tasks/task-10-11-react-redux/src/movies/movie-reducer.test.js</code></li>
-                    <li>Kjør tester med <code>npm run test:watch</code></li>
-                </ul>
 
                 <aside class="notes">
                     <ul>
@@ -1581,7 +1658,7 @@ export default connect(...)(MovieList);
             </section>
 
             <section>
-                <h2>Oppgave 11 (redux + react)</h2>
+                <h2>Oppgave 10c (redux + react)</h2>
 
                 ?????
 
