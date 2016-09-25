@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 
 class MovieList extends Component {
     handleClick(e) {
-        const movieName = this.state.inputValue;
+        const movieName = this.props.inputValue;
 
         this.props.onAddMovie(movieName);
     }
