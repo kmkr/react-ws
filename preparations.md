@@ -14,3 +14,5 @@ npm install
 cd ../task-9-redux
 npm install
 ```
+
+For å se presentasjonen, åpne `open-presentation.html`
