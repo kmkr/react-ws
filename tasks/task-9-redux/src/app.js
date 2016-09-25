@@ -18,7 +18,7 @@ class MyApp extends Component {
         return (
             <Provider store={myStore}>
                 <div>
-                    <Header yourName="Kris-Mikael"/>
+                    <Header yourName="Ditt navn"/>
                     <MovieListContainer/>
                 </div>
             </Provider>
