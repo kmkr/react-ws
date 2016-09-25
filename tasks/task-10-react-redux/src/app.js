@@ -6,7 +6,7 @@ import reduxLogger from 'redux-logger';
 
 import movieReducer from './movies/movie-reducer';
 import Header from './header/header';
-import MovieList from './movies/list-movies';
+import MovieListContainer from './movies/movie-list-container';
 
 const myStore = createStore(
     movieReducer,
@@ -19,7 +19,7 @@ class MyApp extends Component {
             <Provider store={myStore}>
                 <div>
                     <Header yourName="Kris-Mikael"/>
-                    <MovieList handleAddMovie={this.handleAddMovie.bind(this)}/>
+                    <MovieListContainer/>
                 </div>
             </Provider>
         );

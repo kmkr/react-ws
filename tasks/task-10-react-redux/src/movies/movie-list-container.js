@@ -1,48 +1,45 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import MovieList from './movie-list';
+
 class MovieListContainer extends Component {
-    handleInputChange(e) {
-        this.props.dispatch({
-            type: 'SET_INPUT_VALUE',
-            payload: {
-                value: e.target.value
-            }
-        });
+    handleInputChange(input) {
+        // Oppgave 10e implementeres her
+        // Bruk this.props.dispatch(...) til å dispatche en action
+
+        // ...
     }
 
-    handleClick(e) {
-        const movieName = this.props.movies.inputVale;
-        this.props.dispatch({
-            type: 'ADD_MOVIE',
-            payload: {
-                name: movieName
-            }
-        });
+    handleAddMovie(movieName) {
+        // Oppgave 10f implementeres her
+        // Bruk this.props.dispatch(...) til å dispatche en action
+
+        // ...
     }
 
     render() {
-        return (
-            <div>
-                <ul>
-                    {this.props.movies.map(movie => (
-                        <li key={movie}>{movie}</li>
-                    ))}
-                </ul>
+        // Oppgave 10f implementeres her ved å hente ut "movies" og "inputValue" fra props
+        // Props er beriket med verdier fra mapStateToProps som du implementerte i forrige oppgave
+        const movies = [];
+        const inputValue = '';
 
-                <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}/>
-                <button onClick={this.handleClick.bind(this)}>
-                    Legg til film
-                </button>
-            </div>
+        return (
+            <MovieList
+                onAddMovie={this.handleAddMovie.bind(this)}
+                onInputChange={this.handleInputChange.bind(this)}
+                movies={movies}
+                inputValue={inputValue}/>
         );
     }
 }
 
 function mapStateToProps(state) {
-    return {
-        movies: state
-    };
+    // Oppgave 10c implementeres her
+    // Input er state fra reduceren
+    // Output (return value) er et objekt som brukes til å berike this.props i MovieListContainer
+
+    return {}
 }
 
 export default connect(mapStateToProps)(MovieListContainer);

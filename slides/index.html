@@ -756,7 +756,7 @@ class Header extends React.Component {
                 <ul>
                     <li>Fortsette med state og events (med oppgave)</li>
                     <li>Webpack (med oppgave)</li>
-                    <li>Redux (med oppgave)</li>
+                    <li>Redux (med oppgaver)</li>
                 </ul>
 
                 <aside class="notes">
@@ -888,6 +888,19 @@ import MyComponent from './my-component';
             </section>
 
             <section>
+                <h2>Webpack kan fikse</h2>
+
+                <ul>
+                    <li class="fragment">Bundling - slå sammen flere filer til én</li>
+                    <li class="fragment">Transpilering av JavaScript via Babel</li>
+                    <li class="fragment">Kompilering av SASS, LESS, Markdown</li>
+                    <li class="fragment">Linting</li>
+                    <li class="fragment">...</li>
+                </ul>
+
+            </section>
+
+            <section>
                 <pre>
                     <code class="language-javascript">
 cd react-ws/tasks/task-8-webpack
@@ -903,7 +916,7 @@ npm install
                 <h2>Oppgave 8 - Webpack</h2>
 
                 <p>Splitt opp <code>Header</code> og <code>MovieList</code> i egne filer</p>
-                <p>Bruk Webpack for å "bundle" applikasjonen</p>
+                <p>Bruk Webpack til å "bundle" applikasjonen</p>
 
                 <p class="hints">Hint/forslag:</p>
 
@@ -1094,7 +1107,7 @@ npm install
                         </div>
                     </div>
                 </div>
-                <p>Marie ser at hun la til et produkt for mye</p>
+                <p>Marie ser at hun la til en avokado for mye</p>
             </section>
 
             <section>
@@ -1124,7 +1137,7 @@ npm install
                         </div>
                     </div>
                 </div>
-                <p>Marie fjerner det ene fra handlekurven</p>
+                <p>Marie fjerner en avokado fra handlekurven</p>
 
                 <ul>
                     <li>Går et kall til server for å frigjøre produktet fra handlekurven</li>
@@ -1463,12 +1476,13 @@ function movieReducer(state = initialState, action) {
                 <h2>Oppgave 10a - reducer og actions</h2>
 
                 <p>
-                    Implementer <code>SET_INPUT_VALUE</code> action i <code>movie-reducer.js</code>
+                    Implementer reducer for action <code>SET_INPUT_VALUE</code>
                 </p>
 
                 <p class="hints">Hint/forslag:</p>
 
                 <ul>
+                    <li>Ta utgangspunkt i <code>movie-reducer.js</code></li>
                     <li>Kjør tester med <code>npm run test:watch</code></li>
                     <li>Gjør én og én test grønn i <code>movie-reducer-set-input-value.test.js</code></li>
                 </ul>
@@ -1484,15 +1498,44 @@ function movieReducer(state = initialState, action) {
                 <h2>Oppgave 10b - reducer og actions</h2>
 
                 <p>
-                    Implementer <code>ADD_MOVIE</code> action i <code>movie-reducer.js</code>
+                    Implementer reducer for action <code>ADD_MOVIE</code>
                 </p>
 
                 <p class="hints">Hint/forslag:</p>
 
                 <ul>
+                    <li>Utvid <ode>movie-reducer.js</code></li>
                     <li>Kjør tester med <code>npm run test:watch</code></li>
                     <li>Gjør én og én test grønn i <code>movie-reducer-add-movie.test.js</code></li>
                 </ul>
+
+                <aside class="notes">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <style type="text/css">
+                    .rounded-foo {
+                       background-color: #fff;
+                       color: black;
+                       padding: 10px !important;
+                       border: 3px solid black;
+                       border-radius: 15px;
+                    }
+                </style>
+
+                <h2>Hvordan henger dette sammen?</h2>
+
+                <span class="rounded-foo">Action</span>
+                →
+                <span class="rounded-foo">reducer(s)</span>
+                →
+                <span class="rounded-foo">oppdatert state</span>
+                →
+                <span class="rounded-foo">re-render</span>
 
                 <aside class="notes">
                     <ul>
@@ -1564,8 +1607,12 @@ myStore.dispatch(action);
                 </ol>
 
                 <aside class="notes">
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
+
 const initialState = 0;
-function counterReducer(state = initialState, action) {
+function myReducer(state = initialState, action) {
     switch (action.type) {
         case 'INCREMENT':
             return state + 1;
@@ -1573,26 +1620,35 @@ function counterReducer(state = initialState, action) {
             return state;
     }
 }
+const myStore = createStore(myReducer);
 
-class MyComponent extends React.Component {
+class MyCounter extends Component {
+    handleClick() {
+        myStore.dispatch({
+            type: 'INCREMENT'
+        })
+    }
     render() {
-        <div>Count {this.props.counter}</div>
+        return (
+            <div>
+                Counter: {this.props.counter}
+
+                <button onClick={this.handleClick.bind(this)}>Increment counter</button>
+            </div>
+        );
     }
 }
 
-const myStore = Redux.createStore(counterReducer);
-
 function render() {
     const counter = myStore.getState();
-    ReactDOM.render(<MyComponent counter={counter}/>, document.getElementById('my-app'));
+    ReactDOM.render(<MyCounter counter={counter}/>, document.getElementById('my-app'));
 }
 
 render();
 
-myStore.subscribe(() => {
-    render();
-});
+myStore.subscribe(render);
 
+window.myStore = myStore;
                 </aside>
             </section>
 
@@ -1607,6 +1663,31 @@ myStore.subscribe(() => {
 
                 <aside class="notes">
                 </aside>
+            </section>
+
+            <section>
+                <div>
+                    <div style="width: 50%; float: left;">
+                        <p>Presentasjons-komponenter</p>
+
+                        <ul>
+                            <li>Styrer hvordan ting ser ut</li>
+                            <li>Mottar data og callbacks via props</li>
+                            <li>Endrer ikke data selv</li>
+                        </ul>
+                    </div>
+
+                    <div style="width: 50%; float: left;">
+                        <p>Container-komponenter</p>
+
+                        <ul>
+                            <li>Håndterer data</li>
+                            <li>Har tilgang på Redux-store</li>
+                            <li>Dispatcher actions</li>
+                        </ul>
+                    </div>
+                </div>
+
             </section>
 
             <section>
@@ -1641,15 +1722,21 @@ class App extends React.Component {
 
                 <pre>
                     <code class="language-javascript">
-// movie-list.js
+// movie-list-container.js
 import {connect} from 'react-redux';
-class MovieList extends React.Component {
+import MovieList from './movie-list';
+class MovieListContainer extends React.Component {
     render() {
-        return ...;
+        const movieList = this.props.movieList;
+        return &lt;MovieList movies={movieList}/&gt;;
     }
 }
 
-export default connect(...)(MovieList);
+function mapStateToProps(state) {
+    return movieList: state.list
+};
+
+export default connect(mapStateToProps)(MovieListContainer);
                     </code>
                 </pre>
 
@@ -1657,10 +1744,15 @@ export default connect(...)(MovieList);
                 </aside>
             </section>
 
-            <section>
-                <h2>Oppgave 10c (redux + react)</h2>
 
-                ?????
+            <section>
+                <ol start="3" style="list-style-type: lower-alpha !important">
+                    <li>Implementer <code>mapStateToProps</code> i MovieListContainer</li>
+                    <li>Send <code>movies</code> og <code>inputValue</code> i render-funksjonen til MovieListContainer</li>
+                    <li>Dispatch 'SET_INPUT_VALUE' i <code>handleInputChange</code> i MovieListContainer</li>
+                    <li>Dispatch 'ADD_MOVIE' i <code>handleAddMovie</code> i MovieListContainer</li>
+                    <li>Bonusoppgave: Disable knapp i <code>MovieList</code> dersom tekstfeltet er tomt</li>
+                </ol>
 
                 <aside class="notes">
                 </aside>

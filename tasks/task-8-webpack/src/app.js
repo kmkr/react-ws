@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import Header from './header';
+// todo: importer MovieList
 
 class MyApp extends Component {
     render() {
         return (
             <div>
-                // render Header og MovieList
+                <Header yourName="Ditt navn"/>
+                // todo: render MovieList
             </div>
         )
     }

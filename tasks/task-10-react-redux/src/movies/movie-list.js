@@ -1,24 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, {Component, PropTypes} from 'react';
 
 class MovieList extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            inputValue: ''
-        };
-    }
-
-    handleInputChange(e) {
-        this.setState({
-            inputValue: e.target.value
-        });
-    }
-
     handleClick(e) {
         const movieName = this.state.inputValue;
-        this.props.handleAddMovie(movieName);
+
+        this.props.onAddMovie(movieName);
     }
 
     render() {
@@ -30,7 +16,10 @@ class MovieList extends Component {
                     ))}
                 </ul>
 
-                <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}/>
+                <input
+                    value={this.props.inputValue}
+                    onChange={this.props.onInputChange}/>
+
                 <button onClick={this.handleClick.bind(this)}>
                     Legg til film
                 </button>
@@ -39,10 +28,11 @@ class MovieList extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        movies: state
-    };
-}
+MovieList.propTypes = {
+    movies: PropTypes.array.isRequired,
+    inputValue: PropTypes.string.isRequired,
+    onAddMovie: PropTypes.func.isRequired,
+    onInputChange: PropTypes.func.isRequired
+};
 
-export default connect(mapStateToProps)(MovieList);
+export default MovieList;

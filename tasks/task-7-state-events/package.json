@@ -1,0 +1,13 @@
+{
+  "name": "task-6-babel",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "babel --watch src --out-dir dist/"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1"
+  }
+}

@@ -4,7 +4,6 @@ class Header extends React.Component {
     }
 }
 
-
 class MovieList extends React.Component {
     constructor() {
         super();
