@@ -11,6 +11,7 @@ function createAddMovieAction(movieName) {
     }
 }
 
+/*
 test('that the reducer is a function', t => {
     t.true(typeof movieReducer === 'function');
 });
@@ -51,3 +52,4 @@ test('immutable state', t => {
     t.false(firstState === secondState);
     t.false(firstState.list === secondState.list);
 });
+*/

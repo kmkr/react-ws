@@ -850,21 +850,30 @@ class MyComponent extends React.Component {
             </section>
 
             <section>
+                <pre>
+                    <code class="language-javascript">
+cd react-ws/tasks/task-7-state-events
+npm install
+npm run build
+                    </code>
+                </pre>
+
+
+            </section>
+
+            <section>
                 <!-- 25 min -->
                 <h2>Oppgave 7 - state og events</h2>
 
                 <p>Implementer mulighet for å legge til filmer</p>
 
-                <p class="hints">Hint/forslag:</p>
-
-                <ul>
-                    <li>Legg til et inputfelt og en <code>&lt;button&gt;</code> i <code>&lt;MovieList&gt;</code></li>
-                    <li>Sett opp initiell state i <code>constructor()</code></li>
-                    <li>Initiell state kan inkludere både lista med filmer og tekst i inputfeltet</li>
-                    <li>Bruk <code>this.setState({ ... })</code> i <code>handleChange()</code> til å oppdatere inputfelt-verdi</li>
-                    <li>Bruk <code>onChange={ ... }</code> og <code>value={ ... } på input-elementet</code>
-                    <li>Bruk <code>onClick={ ... }</code> på button-elementet for å legge til film i lista</code>
-                </ul>
+                <ol style="list-style-type: lower-alpha; font-size: 25px;">
+                    <li>Sett opp initiell state i <code>constructor()</code>. Initiell state kan inkludere både lista med filmer og tekst i inputfeltet</li>
+                    <li>Bruk <code>this.setState({ ... })</code> i <code>handleChange()</code> til å oppdatere state med inputfelt-verdi</li>
+                    <li>Bruk <code>this.setState({ ... })</code> i <code>handleClick()</code> til å oppdatere state med ny film</li>
+                    <li>Bonusoppgave: tøm inputfeltet når en film er lagt til</li>
+                    <li>Bonusoppgave: disable knapp dersom inputfeltet er tomt</li>
+                </ol>
 
             </section>
 
