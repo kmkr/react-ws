@@ -1,10 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 
 class MovieList extends Component {
-    handleClick(e) {
-        const movieName = this.props.inputValue;
-
-        this.props.onAddMovie(movieName);
+    handleInputChange(e) {
+        const inputValue = e.target.value;
+        this.props.onInputChange(inputValue);
     }
 
     render() {
@@ -18,9 +17,9 @@ class MovieList extends Component {
 
                 <input
                     value={this.props.inputValue}
-                    onChange={this.props.onInputChange}/>
+                    onChange={this.handleInputChange.bind(this)}/>
 
-                <button onClick={this.handleClick.bind(this)}>
+                <button onClick={this.props.onAddMovie}>
                     Legg til film
                 </button>
             </div>
