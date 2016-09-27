@@ -771,9 +771,26 @@ class Header extends React.Component {
                 <!-- 5 min -->
                 <h2>Agenda</h2>
                 <ul>
+                    <li>Recap</li>
                     <li>Fortsette med state og events (med oppgave)</li>
                     <li>Webpack (med oppgave)</li>
                     <li>Redux (med oppgaver)</li>
+                </ul>
+
+                <aside class="notes">
+                    <ul>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <!-- 5 min -->
+                <h2>Recap</h2>
+                <ul>
+                    <li>React-element</li>
+                    <li>React-komponent</li>
+                    <li>Props</li>
+                    <li>JSX</li>
                 </ul>
 
                 <aside class="notes">
@@ -818,6 +835,7 @@ class MyComponent extends React.Component {
                     <code class="language-jsx">
 class MyComponent extends React.Component {
     constructor() {
+        super();
         this.state = {
             myValue: ''
         };
@@ -894,6 +912,7 @@ export default MyComponent;
 <h6 style="text-transform: none; text-align: left;"><code>my-app.js</code></h6>
                 <pre>
                     <code class="language-javascript">
+import React from 'react';
 import ReactDOM from 'react-dom';
 import MyComponent from './my-component';
                     </code>
@@ -941,15 +960,15 @@ npm install
                 <!-- ??? min -->
                 <h2>Oppgave 8 - Webpack</h2>
 
-                <p>Lag en ny fil, <code>movie-list.js</code> og legg <code>MovieList</code> i den</p>
-                <p>Bruk Webpack til å "bundle" applikasjonen</p>
+                <p>Trekk MovieList ut i egen fil, og bruk Webpack til å bundle applikasjonen</p>
 
                 <p class="hints">Hint/forslag:</p>
 
                 <ul>
                     <li>Ta utgangspunkt i <code>tasks/task-8-webpack</code></li>
+                    <li>Lag en ny fil, <code>movie-list.js</code></li>
                     <li>Bruk <code>npm run watch</code> mens du utvikler</li>
-                    <li>Importer og render de nye filene i <code>tasks/task-8-webpack/src/app.js</code></li>
+                    <li>Importer og render den nye fila i <code>tasks/task-8-webpack/src/app.js</code></li>
                     <li>Bruk <code>header.js</code> som eksempel hvis du står fast</li>
                 </ul>
 
